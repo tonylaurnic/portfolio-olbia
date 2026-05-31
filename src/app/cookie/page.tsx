@@ -1,6 +1,9 @@
+import LegalLayout from "@/components/LegalLayout";
+
 export default function Cookie() {
   return (
-    <main className="min-h-screen bg-white max-w-3xl mx-auto px-6 py-24">
+    <LegalLayout>
+    <main className="max-w-3xl mx-auto px-6 py-16">
       <h1 className="text-4xl font-extrabold text-gray-900 mb-2">Politica sui Cookie</h1>
       <p className="text-gray-400 text-sm mb-10">Ai sensi della Direttiva UE 2009/136/CE e del GDPR</p>
 
@@ -55,9 +58,7 @@ export default function Cookie() {
         </div>
       </section>
 
-      <div className="mt-12">
-        <a href="/" className="text-blue-600 hover:underline text-sm">← Torna alla home</a>
-      </div>
     </main>
+    </LegalLayout>
   );
 }

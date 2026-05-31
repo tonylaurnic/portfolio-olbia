@@ -1,6 +1,9 @@
+import LegalLayout from "@/components/LegalLayout";
+
 export default function NoteLegali() {
   return (
-    <main className="min-h-screen bg-white max-w-3xl mx-auto px-6 py-24">
+    <LegalLayout>
+    <main className="max-w-3xl mx-auto px-6 py-16">
       <h1 className="text-4xl font-extrabold text-gray-900 mb-2">Note Legali & Contatti</h1>
       <p className="text-gray-400 text-sm mb-10">Ai sensi dell'art. 2250 c.c. e del D.Lgs. 70/2003</p>
 
@@ -8,7 +11,7 @@ export default function NoteLegali() {
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Titolare del sito</h2>
           <p>Antoniu Laurentiu Stratulat</p>
-          <p>Libero professionista — P.IVA: <em>(in fase di attivazione)</em></p>
+          <p>Libero professionista — Contratto individuale</p>
           <p>Olbia (OT), Sardegna — Italia</p>
         </div>
 
@@ -20,7 +23,7 @@ export default function NoteLegali() {
 
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Hosting e infrastruttura</h2>
-          <p>Il sito è ospitato su Vercel Inc., 340 Pine Street, San Francisco, CA 94104, USA.</p>
+          <p>Il sito è ospitato su Google Firebase Hosting (Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA).</p>
         </div>
 
         <div>
@@ -34,9 +37,7 @@ export default function NoteLegali() {
         </div>
       </section>
 
-      <div className="mt-12">
-        <a href="/" className="text-blue-600 hover:underline text-sm">← Torna alla home</a>
-      </div>
     </main>
+    </LegalLayout>
   );
 }

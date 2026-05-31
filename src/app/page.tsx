@@ -11,14 +11,12 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import HowItWorks from "@/components/HowItWorks";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import SplashScreen from "@/components/SplashScreen";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("it");
 
   return (
     <>
-      <SplashScreen />
       <Navbar lang={lang} setLang={setLang} />
       <main>
         <Hero lang={lang} />

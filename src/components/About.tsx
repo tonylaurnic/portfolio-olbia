@@ -55,7 +55,7 @@ export default function About({ lang }: { lang: Lang }) {
                   src="/profile.jpg"
                   alt="Antoniu Laurentiu Stratulat"
                   fill
-                  className="object-cover object-top"
+                  className="object-cover object-center"
                 />
               </div>
               {/* Online badge */}

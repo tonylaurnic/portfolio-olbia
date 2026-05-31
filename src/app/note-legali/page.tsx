@@ -1,6 +1,6 @@
 export default function NoteLegali() {
   return (
-    <main className="max-w-3xl mx-auto px-6 py-24">
+    <main className="min-h-screen bg-white max-w-3xl mx-auto px-6 py-24">
       <h1 className="text-4xl font-extrabold text-gray-900 mb-2">Note Legali & Contatti</h1>
       <p className="text-gray-400 text-sm mb-10">Ai sensi dell'art. 2250 c.c. e del D.Lgs. 70/2003</p>
 

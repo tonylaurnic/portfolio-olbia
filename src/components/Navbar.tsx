@@ -79,7 +79,11 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
           {/* Language toggle */}
           <button
             onClick={() => setLang(lang === "it" ? "en" : "it")}
-            className="text-xs font-semibold px-2 py-1 rounded border border-gray-300 hover:border-blue-500 hover:text-blue-600 transition-colors"
+            className={`text-xs font-semibold px-2 py-1 rounded border transition-colors hover:border-blue-500 hover:text-blue-400 ${
+              scrolled
+                ? "border-gray-300 text-gray-700"
+                : "border-white/30 text-white/80"
+            }`}
           >
             {lang === "it" ? "EN" : "IT"}
           </button>
@@ -92,7 +96,10 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
           </a>
 
           {/* Mobile burger */}
-          <button className="md:hidden" onClick={() => setOpen(!open)}>
+          <button
+            className={`md:hidden transition-colors ${scrolled ? "text-gray-800" : "text-white"}`}
+            onClick={() => setOpen(!open)}
+          >
             {open ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>

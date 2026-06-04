@@ -14,6 +14,13 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
+  const [langOpen, setLangOpen] = useState(false);
+
+  useEffect(() => {
+    const handler = () => setLangOpen(false);
+    document.addEventListener("click", handler);
+    return () => document.removeEventListener("click", handler);
+  }, []);
   const tr = t[lang].nav;
 
   useEffect(() => {
@@ -78,22 +85,39 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
         </ul>
 
         <div className="flex items-center gap-3">
-          {/* Language toggle */}
-          {(["it","en","de","ro"] as const).map((l) => (
+          {/* Language dropdown */}
+          <div className="relative">
             <button
-              key={l}
-              onClick={() => setLang(l)}
-              className={`text-xs font-semibold px-2 py-1 rounded border transition-colors ${
-                lang === l
-                  ? "border-blue-500 text-blue-400"
-                  : scrolled
-                  ? "border-gray-200 text-gray-400 hover:border-blue-400 hover:text-blue-400"
-                  : "border-white/20 text-white/50 hover:border-white/60 hover:text-white/90"
+              onClick={(e) => { e.stopPropagation(); setLangOpen(!langOpen); }}
+              className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors ${
+                scrolled
+                  ? "border-gray-200 text-gray-700 hover:border-blue-400 bg-white"
+                  : "border-white/20 text-white/80 hover:border-white/50 bg-white/5"
               }`}
             >
-              {l === "it" ? "🇮🇹" : l === "en" ? "🇬🇧" : l === "de" ? "🇩🇪" : "🇷🇴"}
+              {lang === "it" ? "🇮🇹 IT" : lang === "en" ? "🇬🇧 EN" : lang === "de" ? "🇩🇪 DE" : "🇷🇴 RO"}
+              <svg className={`w-3 h-3 transition-transform ${langOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
             </button>
-          ))}
+
+            {langOpen && (
+              <div className="absolute right-0 top-full mt-1 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden z-50 min-w-[110px]">
+                {(["it","en","de","ro"] as const).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => { setLang(l); setLangOpen(false); }}
+                    className={`w-full flex items-center gap-2 px-4 py-2.5 text-sm font-medium transition-colors hover:bg-blue-50 hover:text-blue-600 ${
+                      lang === l ? "bg-blue-50 text-blue-600" : "text-gray-700"
+                    }`}
+                  >
+                    {l === "it" ? "🇮🇹" : l === "en" ? "🇬🇧" : l === "de" ? "🇩🇪" : "🇷🇴"}
+                    {l === "it" ? "Italiano" : l === "en" ? "English" : l === "de" ? "Deutsch" : "Română"}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
           <a
             href="#contact"

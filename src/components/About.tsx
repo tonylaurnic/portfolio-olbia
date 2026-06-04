@@ -4,14 +4,12 @@ import Image from "next/image";
 import { MapPin, Calendar, Coffee } from "lucide-react";
 import { Lang, t } from "@/lib/i18n";
 
-const skills = [
-  { name: "Siti Web moderni e veloci", level: 90 },
-  { name: "App iOS & Android", level: 85 },
-  { name: "App per TV & schermi digitali", level: 82 },
-  { name: "Design semplice e professionale", level: 80 },
-  { name: "Sistemi gestionali su misura", level: 78 },
-  { name: "E-commerce e negozi online", level: 75 },
-];
+const skills = {
+  it: ["Siti Web", "App iOS & Android", "App per TV & Schermi Digitali", "Design UI/UX", "E-commerce", "Sistemi Gestionali", "Intelligenza Artificiale", "Digital Signage"],
+  en: ["Websites", "iOS & Android Apps", "TV & Digital Signage Apps", "UI/UX Design", "E-commerce", "Management Systems", "Artificial Intelligence", "Digital Signage"],
+  de: ["Websites", "iOS & Android Apps", "TV & Digital Signage Apps", "UI/UX Design", "E-Commerce", "Verwaltungssysteme", "Künstliche Intelligenz", "Digital Signage"],
+  ro: ["Site-uri Web", "App iOS & Android", "App TV & Digital Signage", "Design UI/UX", "E-commerce", "Sisteme de Gestiune", "Inteligență Artificială", "Digital Signage"],
+};
 
 const facts = {
   it: [
@@ -109,16 +107,9 @@ export default function About({ lang }: { lang: Lang }) {
             <p className="text-slate-300 leading-relaxed mb-4">{tr.p1}</p>
             <p className="text-slate-300 leading-relaxed mb-6">{tr.p2}</p>
 
-            <div className="flex flex-wrap gap-2">
-              {["Siti Web", "App Mobile", "App per TV", "E-commerce", "Negozi Online", "Digital Signage", "Design UI", "Sistemi Gestionali"].map((tech) => (
-                <span key={tech} className="bg-blue-500/15 text-blue-300 text-sm font-medium px-3 py-1 rounded-full border border-blue-500/20">
-                  {tech}
-                </span>
-              ))}
-            </div>
           </motion.div>
 
-          {/* Skill bars */}
+          {/* Skills as checkmarks */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -128,23 +119,23 @@ export default function About({ lang }: { lang: Lang }) {
             <h3 className="text-white font-bold text-lg mb-6 border-l-4 border-blue-500 pl-3">
               {tr.skills}
             </h3>
-            <div className="space-y-5">
-              {skills.map((s, i) => (
-                <div key={i}>
-                  <div className="flex justify-between text-sm mb-1.5">
-                    <span className="font-medium text-slate-200">{s.name}</span>
-                    <span className="text-slate-400">{s.level}%</span>
+            <div className="grid grid-cols-1 gap-3">
+              {skills[lang].map((skill, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: i * 0.07 }}
+                  className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3"
+                >
+                  <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center shrink-0">
+                    <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
                   </div>
-                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${s.level}%` }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: i * 0.1 }}
-                      className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full"
-                    />
-                  </div>
-                </div>
+                  <span className="text-slate-200 text-sm font-medium">{skill}</span>
+                </motion.div>
               ))}
             </div>
           </motion.div>

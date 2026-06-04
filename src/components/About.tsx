@@ -5,10 +5,10 @@ import { MapPin, Calendar, Coffee } from "lucide-react";
 import { Lang, t } from "@/lib/i18n";
 
 const skills = {
-  it: ["Siti Web", "App iOS & Android", "App per TV & Schermi Digitali", "Design UI/UX", "E-commerce", "Sistemi Gestionali", "Intelligenza Artificiale", "Digital Signage"],
-  en: ["Websites", "iOS & Android Apps", "TV & Digital Signage Apps", "UI/UX Design", "E-commerce", "Management Systems", "Artificial Intelligence", "Digital Signage"],
-  de: ["Websites", "iOS & Android Apps", "TV & Digital Signage Apps", "UI/UX Design", "E-Commerce", "Verwaltungssysteme", "Künstliche Intelligenz", "Digital Signage"],
-  ro: ["Site-uri Web", "App iOS & Android", "App TV & Digital Signage", "Design UI/UX", "E-commerce", "Sisteme de Gestiune", "Inteligență Artificială", "Digital Signage"],
+  it: ["Siti Web", "App iOS & Android", "App per TV & Schermi Digitali", "E-commerce", "Sistemi Gestionali", "Intelligenza Artificiale", "Digital Signage"],
+  en: ["Websites", "iOS & Android Apps", "TV & Digital Signage Apps", "E-commerce", "Management Systems", "Artificial Intelligence", "Digital Signage"],
+  de: ["Websites", "iOS & Android Apps", "TV & Digital Signage Apps", "E-Commerce", "Verwaltungssysteme", "Künstliche Intelligenz", "Digital Signage"],
+  ro: ["Site-uri Web", "App iOS & Android", "App TV & Digital Signage", "E-commerce", "Sisteme de Gestiune", "Inteligență Artificială", "Digital Signage"],
 };
 
 const facts = {

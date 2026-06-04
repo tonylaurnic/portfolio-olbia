@@ -182,7 +182,6 @@ const categories = [
 
 const deliverables = [
   "Analisi del progetto",
-  "Design UI/UX",
   "Sviluppo Flutter / Web",
   "Backend e Database",
   "Intelligenza Artificiale",

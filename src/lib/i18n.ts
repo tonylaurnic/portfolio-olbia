@@ -24,8 +24,8 @@ export const t = {
     portfolio: { title: "I miei lavori", subtitle: "Progetti reali, per clienti reali", viewProject: "Vedi progetto" },
     about: {
       title: "Chi sono",
-      p1: "Sono Antoniu, uno sviluppatore freelance di Olbia. Aiuto negozi, ristoranti, studi professionali e piccole imprese ad avere una presenza digitale che funziona davvero.",
-      p2: "Non parlo solo di codice — ti spiego cosa stai comprando, cosa aspettarti e quando sarà pronto. Niente sorprese, niente tecnicismi inutili.",
+      p1: "Sono Antoniu, sviluppatore freelance di Olbia con 18 anni di esperienza nella ristorazione come sushiman. Conosco i ritmi frenetici della cucina, le problematiche del servizio e le esigenze reali di chi lavora nella ristorazione — non da libro, ma dal campo.",
+      p2: "Questa doppia esperienza mi permette di creare soluzioni digitali che funzionano davvero per ristoranti, bar e locali. Parlo la tua lingua, capisco i tuoi tempi e so cosa ti serve senza che tu debba spiegarmelo due volte.",
       skills: "Cosa so fare",
     },
     testimonials: { title: "Cosa dicono i clienti" },
@@ -61,8 +61,8 @@ export const t = {
     portfolio: { title: "My work", subtitle: "Real projects, for real clients", viewProject: "View project" },
     about: {
       title: "About me",
-      p1: "I'm Antoniu, a freelance developer from Olbia. I help shops, restaurants, professional studios and small businesses have a digital presence that actually works.",
-      p2: "I don't just talk code — I explain what you're buying, what to expect and when it'll be ready. No surprises, no unnecessary jargon.",
+      p1: "I'm Antoniu, a freelance developer from Olbia with 18 years of experience in the restaurant industry as a sushiman. I know the hectic pace of the kitchen, the challenges of service and the real needs of restaurant workers — not from a book, but from the floor.",
+      p2: "This dual experience allows me to create digital solutions that actually work for restaurants, bars and venues. I speak your language, I understand your schedule and I know what you need without you having to explain it twice.",
       skills: "What I can do",
     },
     testimonials: { title: "What clients say" },
@@ -98,8 +98,8 @@ export const t = {
     portfolio: { title: "Meine Arbeiten", subtitle: "Echte Projekte, für echte Kunden", viewProject: "Projekt ansehen" },
     about: {
       title: "Über mich",
-      p1: "Ich bin Antoniu, freiberuflicher Entwickler aus Olbia. Ich helfe Geschäften, Restaurants, Büros und kleinen Unternehmen, eine digitale Präsenz zu haben, die wirklich funktioniert.",
-      p2: "Ich erkläre Ihnen, was Sie kaufen, was Sie erwarten können und wann es fertig ist. Keine Überraschungen, kein unnötiger Fachjargon.",
+      p1: "Ich bin Antoniu, freiberuflicher Entwickler aus Olbia mit 18 Jahren Erfahrung in der Gastronomie als Sushiman. Ich kenne den hektischen Rhythmus der Küche und die realen Herausforderungen des Restaurantbetriebs — nicht aus Büchern, sondern aus der Praxis.",
+      p2: "Diese doppelte Erfahrung ermöglicht es mir, digitale Lösungen zu entwickeln, die für Restaurants, Bars und Lokale wirklich funktionieren. Ich spreche Ihre Sprache und verstehe Ihre Bedürfnisse.",
       skills: "Was ich kann",
     },
     testimonials: { title: "Was Kunden sagen" },
@@ -135,8 +135,8 @@ export const t = {
     portfolio: { title: "Lucrările mele", subtitle: "Proiecte reale, pentru clienți reali", viewProject: "Vezi proiectul" },
     about: {
       title: "Despre mine",
-      p1: "Sunt Antoniu, dezvoltator freelance din Olbia. Ajut magazine, restaurante, birouri și afaceri mici să aibă o prezență digitală care funcționează cu adevărat.",
-      p2: "Nu vorbesc doar despre cod — îți explic ce cumperi, la ce să te aștepți și când va fi gata. Fără surprize, fără jargon tehnic inutil.",
+      p1: "Sunt Antoniu, dezvoltator freelance din Olbia cu 18 ani de experiență în restaurante ca sushiman. Cunosc ritmul frenetic al bucătăriei și problemele reale ale celor care lucrează în restaurante — nu din cărți, ci din teren.",
+      p2: "Această dublă experiență îmi permite să creez soluții digitale care funcționează cu adevărat pentru restaurante, baruri și localuri. Vorbesc limba ta și înțeleg nevoile tale.",
       skills: "Ce știu să fac",
     },
     testimonials: { title: "Ce spun clienții" },

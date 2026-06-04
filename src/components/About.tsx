@@ -16,23 +16,23 @@ const skills = [
 const facts = {
   it: [
     { icon: MapPin, text: "Olbia, Sardegna" },
-    { icon: Calendar, text: "5+ anni di esperienza" },
-    { icon: Coffee, text: "Sempre disponibile per un caffè ☕" },
+    { icon: Calendar, text: "5+ anni come sviluppatore" },
+    { icon: Coffee, text: "18 anni come sushiman 🍣" },
   ],
   en: [
     { icon: MapPin, text: "Olbia, Sardinia" },
-    { icon: Calendar, text: "5+ years of experience" },
-    { icon: Coffee, text: "Always up for a coffee ☕" },
+    { icon: Calendar, text: "5+ years as developer" },
+    { icon: Coffee, text: "18 years as sushiman 🍣" },
   ],
   de: [
     { icon: MapPin, text: "Olbia, Sardinien" },
-    { icon: Calendar, text: "5+ Jahre Erfahrung" },
-    { icon: Coffee, text: "Immer für einen Kaffee bereit ☕" },
+    { icon: Calendar, text: "5+ Jahre als Entwickler" },
+    { icon: Coffee, text: "18 Jahre als Sushiman 🍣" },
   ],
   ro: [
     { icon: MapPin, text: "Olbia, Sardinia" },
-    { icon: Calendar, text: "5+ ani de experiență" },
-    { icon: Coffee, text: "Mereu disponibil pentru o cafea ☕" },
+    { icon: Calendar, text: "5+ ani ca dezvoltator" },
+    { icon: Coffee, text: "18 ani ca sushiman 🍣" },
   ],
 };
 

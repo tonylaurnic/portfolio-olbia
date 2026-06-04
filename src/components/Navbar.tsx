@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 import Logo, { LogoScrolled } from "@/components/Logo";
 import { Lang, t } from "@/lib/i18n";
 
@@ -39,6 +40,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
   const links = [
     { label: tr.services, href: "#services", id: "services" },
     { label: tr.portfolio, href: "#portfolio", id: "portfolio" },
+    { label: lang === "it" ? "Idee" : "Ideas", href: "/idee", id: "idee" },
     { label: tr.about, href: "#about", id: "about" },
     { label: tr.contact, href: "#contact", id: "contact" },
   ];
@@ -58,7 +60,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
         <ul className="hidden md:flex gap-8 text-sm font-medium">
           {links.map((l) => (
             <li key={l.href}>
-              <a
+              <Link
                 href={l.href}
                 className={`relative transition-colors hover:text-blue-400 ${
                   active === l.id
@@ -70,7 +72,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
                 {active === l.id && (
                   <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 rounded-full" />
                 )}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Logo, { LogoScrolled } from "@/components/Logo";
@@ -15,11 +15,16 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
   const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handler = () => setLangOpen(false);
-    document.addEventListener("click", handler);
-    return () => document.removeEventListener("click", handler);
+    const handler = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setLangOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
   }, []);
   const tr = t[lang].nav;
 
@@ -86,9 +91,9 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
 
         <div className="flex items-center gap-3">
           {/* Language dropdown */}
-          <div className="relative">
+          <div className="relative" ref={langRef}>
             <button
-              onClick={(e) => { e.stopPropagation(); setLangOpen(!langOpen); }}
+              onClick={() => setLangOpen(!langOpen)}
               className={`flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg border transition-colors ${
                 scrolled
                   ? "border-gray-200 text-gray-700 hover:border-blue-400 bg-white"

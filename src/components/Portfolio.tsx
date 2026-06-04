@@ -11,12 +11,14 @@ type Project = ProjectData;
 const projects: Project[] = [
   {
     title: "DentalCare Plus",
-    category: { it: "Sito Web — Germania", en: "Website — Germany" },
+    category: { it: "Sito Web — Germania", en: "Website — Germany", de: "Website — Deutschland", ro: "Site Web — Germania" },
     desc: {
       it: "Sito professionale per studio dentistico in Germania. Design moderno, multilingua DE/EN, sistema di prenotazione appuntamenti online e ottimizzazione SEO locale.",
       en: "Professional website for a dental clinic in Germany. Modern design, DE/EN multilingual, online appointment booking and local SEO optimisation.",
+      de: "Professionelle Website für eine Zahnarztpraxis in Deutschland. Modernes Design, DE/EN mehrsprachig, Online-Terminbuchung und lokale SEO-Optimierung.",
+      ro: "Site profesional pentru o clinică dentară din Germania. Design modern, multilingv DE/EN, programări online și optimizare SEO locală.",
     },
-    result: { it: "Progetto reale completato e online", en: "Real project — completed and live" },
+    result: { it: "Progetto reale completato e online", en: "Real project — completed and live", de: "Echtes Projekt — fertiggestellt und online", ro: "Proiect real — finalizat și online" },
     tags: ["Sito Web", "Multilingua", "Prenotazioni Online"],
     color: "from-sky-100 to-blue-50",
     image: "/dentalcare-plus.png",
@@ -26,12 +28,14 @@ const projects: Project[] = [
   },
   {
     title: "AndroDashCam",
-    category: { it: "App Android — Play Store", en: "Android App — Play Store" },
+    category: { it: "App Android — Play Store", en: "Android App — Play Store", de: "Android-App — Play Store", ro: "App Android — Play Store" },
     desc: {
       it: "App dashcam per Android pubblicata sul Google Play Store. Registrazione automatica in loop, rilevamento urti e salvataggio video in background.",
       en: "Android dashcam app published on Google Play Store. Automatic loop recording, crash detection and background video saving.",
+      de: "Android-Dashcam-App im Google Play Store. Automatische Loop-Aufnahme, Aufprallauslösung und Videospeicherung im Hintergrund.",
+      ro: "Aplicație dashcam pentru Android publicată pe Google Play Store. Înregistrare automată în buclă, detectare impact și salvare video în fundal.",
     },
-    result: { it: "App live su Google Play Store", en: "App live on Google Play Store" },
+    result: { it: "App live su Google Play Store", en: "App live on Google Play Store", de: "App live im Google Play Store", ro: "Aplicație live pe Google Play Store" },
     tags: ["App Android", "Google Play Store", "Registrazione Video"],
     color: "from-gray-900 to-gray-700",
     image: "/androdashcam.png",
@@ -41,12 +45,14 @@ const projects: Project[] = [
   },
   {
     title: "DySign",
-    category: { it: "App TV — Schermo Digitale per Locali", en: "TV App — Digital Screen for Venues" },
+    category: { it: "App TV — Schermo Digitale per Locali", en: "TV App — Digital Screen for Venues", de: "TV-App — Digitaler Bildschirm für Lokale", ro: "App TV — Ecran Digital pentru Localuri" },
     desc: {
       it: "Il tuo schermo TV diventa uno strumento di marketing. Mostra menu, offerte, foto e promozioni — aggiorni tutto dal telefono in pochi secondi, anche mentre sei a casa.",
       en: "Your TV screen becomes a marketing tool. Show menus, offers, photos and promotions — update everything from your phone in seconds, even from home.",
+      de: "Ihr TV-Bildschirm wird zum Marketingtool. Zeigen Sie Menüs, Angebote, Fotos und Aktionen — alles vom Handy in Sekunden aktualisierbar.",
+      ro: "Ecranul tău TV devine un instrument de marketing. Afișezi meniuri, oferte, fotografii și promoții — actualizezi totul de pe telefon în câteva secunde.",
     },
-    result: { it: "Già in uso in ristoranti e locali in Sardegna", en: "Already in use in restaurants and venues in Sardinia" },
+    result: { it: "Già in uso in ristoranti e locali in Sardegna", en: "Already in use in restaurants and venues in Sardinia", de: "Bereits in Restaurants und Lokalen auf Sardinien im Einsatz", ro: "Deja folosit în restaurante și localuri din Sardinia" },
     tags: ["Schermo TV", "Menu Digitale", "Promozioni Live", "Aggiornamento da telefono"],
     color: "from-violet-600 to-purple-800",
     image: "/dysign-preview.png",

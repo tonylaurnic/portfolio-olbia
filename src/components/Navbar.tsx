@@ -79,16 +79,21 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
 
         <div className="flex items-center gap-3">
           {/* Language toggle */}
-          <button
-            onClick={() => setLang(lang === "it" ? "en" : "it")}
-            className={`text-xs font-semibold px-2 py-1 rounded border transition-colors hover:border-blue-500 hover:text-blue-400 ${
-              scrolled
-                ? "border-gray-300 text-gray-700"
-                : "border-white/30 text-white/80"
-            }`}
-          >
-            {lang === "it" ? "EN" : "IT"}
-          </button>
+          {(["it","en","de","ro"] as const).map((l) => (
+            <button
+              key={l}
+              onClick={() => setLang(l)}
+              className={`text-xs font-semibold px-2 py-1 rounded border transition-colors ${
+                lang === l
+                  ? "border-blue-500 text-blue-400"
+                  : scrolled
+                  ? "border-gray-200 text-gray-400 hover:border-blue-400 hover:text-blue-400"
+                  : "border-white/20 text-white/50 hover:border-white/60 hover:text-white/90"
+              }`}
+            >
+              {l === "it" ? "🇮🇹" : l === "en" ? "🇬🇧" : l === "de" ? "🇩🇪" : "🇷🇴"}
+            </button>
+          ))}
 
           <a
             href="#contact"

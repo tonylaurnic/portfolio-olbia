@@ -5,7 +5,7 @@ import { Lang, t } from "@/lib/i18n";
 export default function Footer({ lang }: { lang: Lang }) {
   const year = new Date().getFullYear();
 
-  const legal = {
+  const legal: Record<Lang, { label: string; href: string }[]> = {
     it: [
       { label: "Note Legali & Contatti", href: "/note-legali" },
       { label: "Informativa sulla Privacy", href: "/privacy" },
@@ -16,6 +16,16 @@ export default function Footer({ lang }: { lang: Lang }) {
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Cookie Policy", href: "/cookie" },
     ],
+    de: [
+      { label: "Impressum & Kontakt", href: "/note-legali" },
+      { label: "Datenschutzerklärung", href: "/privacy" },
+      { label: "Cookie-Richtlinie", href: "/cookie" },
+    ],
+    ro: [
+      { label: "Note Legale & Contact", href: "/note-legali" },
+      { label: "Politica de Confidențialitate", href: "/privacy" },
+      { label: "Politica Cookie", href: "/cookie" },
+    ],
   };
 
   return (
@@ -25,15 +35,19 @@ export default function Footer({ lang }: { lang: Lang }) {
           <div className="flex flex-col items-center md:items-start gap-3">
             <Logo size={34} />
             <p className="text-sm text-gray-500 max-w-xs text-center md:text-left">
-              {lang === "it"
-                ? "Sviluppatore freelance a Olbia, Sardegna."
+              {lang === "it" ? "Sviluppatore freelance a Olbia, Sardegna."
+                : lang === "de" ? "Freiberuflicher Entwickler in Olbia, Sardinien."
+                : lang === "ro" ? "Dezvoltator freelance în Olbia, Sardinia."
                 : "Freelance developer in Olbia, Sardinia."}
             </p>
           </div>
 
           <div className="flex flex-col items-center md:items-end gap-2">
             <p className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-1">
-              {lang === "it" ? "Legale & Informazioni" : "Legal & Information"}
+              {lang === "it" ? "Legale & Informazioni"
+                : lang === "de" ? "Rechtliches & Informationen"
+                : lang === "ro" ? "Legal & Informații"
+                : "Legal & Information"}
             </p>
             {legal[lang].map((l) => (
               <Link

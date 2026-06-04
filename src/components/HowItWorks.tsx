@@ -52,13 +52,27 @@ const steps = {
   ],
 };
 
+const steps_de = [
+  { icon: Phone, number: "01", title: "Kostenloses Gespräch", desc: "Erzählen Sie mir von Ihrem Projekt per Anruf oder WhatsApp. Keine Verpflichtung, keine Kosten.", color: "bg-blue-100 text-blue-600" },
+  { icon: FileText, number: "02", title: "Angebot in 24h", desc: "Sie erhalten innerhalb von 24 Stunden ein klares Angebot. Festpreise, keine Überraschungen.", color: "bg-purple-100 text-purple-600" },
+  { icon: Rocket, number: "03", title: "Los geht's!", desc: "Wir beginnen zu arbeiten. Ich halte Sie auf dem Laufenden und liefere pünktlich.", color: "bg-green-100 text-green-600" },
+];
+
+const steps_ro = [
+  { icon: Phone, number: "01", title: "Apel gratuit", desc: "Îmi povestești despre proiect printr-un apel sau pe WhatsApp. Fără angajament, fără costuri.", color: "bg-blue-100 text-blue-600" },
+  { icon: FileText, number: "02", title: "Ofertă în 24h", desc: "Primești o ofertă clară și detaliată în 24 de ore. Prețuri fixe, fără surprize.", color: "bg-purple-100 text-purple-600" },
+  { icon: Rocket, number: "03", title: "Să începem!", desc: "Începem să lucrăm. Te țin la curent la fiecare pas și livrez la timp.", color: "bg-green-100 text-green-600" },
+];
+
 const titles = {
   it: { title: "Come funziona", subtitle: "Semplice, veloce, trasparente" },
   en: { title: "How it works", subtitle: "Simple, fast, transparent" },
+  de: { title: "Wie es funktioniert", subtitle: "Einfach, schnell, transparent" },
+  ro: { title: "Cum funcționează", subtitle: "Simplu, rapid, transparent" },
 };
 
 export default function HowItWorks({ lang }: { lang: Lang }) {
-  const items = steps[lang];
+  const items = lang === "de" ? steps_de : lang === "ro" ? steps_ro : steps[lang as "it" | "en"];
   const { title, subtitle } = titles[lang];
 
   return (

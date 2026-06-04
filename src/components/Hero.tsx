@@ -7,6 +7,8 @@ import { Lang, t } from "@/lib/i18n";
 const roles = {
   it: ["Sviluppatore Web", "App Mobile", "Digital Signage", "Software Custom"],
   en: ["Web Developer", "Mobile Apps", "Digital Signage", "Custom Software"],
+  de: ["Web-Entwickler", "Mobile Apps", "Digital Signage", "Software"],
+  ro: ["Dezvoltator Web", "App Mobile", "Digital Signage", "Software Custom"],
 };
 
 const stats = {
@@ -19,6 +21,16 @@ const stats = {
     { icon: Briefcase, value: "20+", label: "Projects" },
     { icon: Star, value: "5★", label: "Reviews" },
     { icon: Users, value: "15+", label: "Clients" },
+  ],
+  de: [
+    { icon: Briefcase, value: "20+", label: "Projekte" },
+    { icon: Star, value: "5★", label: "Bewertungen" },
+    { icon: Users, value: "15+", label: "Kunden" },
+  ],
+  ro: [
+    { icon: Briefcase, value: "20+", label: "Proiecte" },
+    { icon: Star, value: "5★", label: "Recenzii" },
+    { icon: Users, value: "15+", label: "Clienți" },
   ],
 };
 
@@ -57,7 +69,7 @@ export default function Hero({ lang }: { lang: Lang }) {
             className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4"
           >
             <span className="text-slate-400 text-2xl md:text-3xl font-medium block mb-2">
-              {lang === "it" ? "👋 Ciao, sono" : "👋 Hi, I'm"}
+              {lang === "it" ? "👋 Ciao, sono" : lang === "de" ? "👋 Hallo, ich bin" : lang === "ro" ? "👋 Bună, sunt" : "👋 Hi, I'm"}
             </span>
             <span className="text-white">Antoniu</span>{" "}
             <br className="hidden md:block" />

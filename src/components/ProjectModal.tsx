@@ -7,9 +7,9 @@ import { Lang } from "@/lib/i18n";
 
 export type ProjectData = {
   title: string;
-  category: { it: string; en: string };
-  desc: { it: string; en: string };
-  result: { it: string; en: string };
+  category: Record<string, string>;
+  desc: Record<string, string>;
+  result: Record<string, string>;
   tags: string[];
   color: string;
   emoji?: string;

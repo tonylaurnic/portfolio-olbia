@@ -7,14 +7,10 @@ import { Lang } from "@/lib/i18n";
 const WHATSAPP_NUMBER = "393883879487";
 
 const messages = {
-  it: {
-    tooltip: "Ciao! Come posso aiutarti? 👋",
-    pretext: "Ciao Antoniu! Ho visto il tuo portfolio e vorrei un preventivo.",
-  },
-  en: {
-    tooltip: "Hi! How can I help you? 👋",
-    pretext: "Hi Antoniu! I saw your portfolio and I'd like a quote.",
-  },
+  it: { tooltip: "Ciao! Come posso aiutarti? 👋", pretext: "Ciao Antoniu! Ho visto il tuo portfolio e vorrei un preventivo." },
+  en: { tooltip: "Hi! How can I help you? 👋", pretext: "Hi Antoniu! I saw your portfolio and I'd like a quote." },
+  de: { tooltip: "Hallo! Wie kann ich helfen? 👋", pretext: "Hallo Antoniu! Ich habe Ihr Portfolio gesehen und möchte ein Angebot." },
+  ro: { tooltip: "Bună! Cum te pot ajuta? 👋", pretext: "Bună Antoniu! Am văzut portofoliul tău și aș dori o ofertă." },
 };
 
 export default function WhatsAppFloat({ lang }: { lang: Lang }) {

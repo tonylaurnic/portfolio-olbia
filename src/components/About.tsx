@@ -24,6 +24,16 @@ const facts = {
     { icon: Calendar, text: "5+ years of experience" },
     { icon: Coffee, text: "Always up for a coffee ☕" },
   ],
+  de: [
+    { icon: MapPin, text: "Olbia, Sardinien" },
+    { icon: Calendar, text: "5+ Jahre Erfahrung" },
+    { icon: Coffee, text: "Immer für einen Kaffee bereit ☕" },
+  ],
+  ro: [
+    { icon: MapPin, text: "Olbia, Sardinia" },
+    { icon: Calendar, text: "5+ ani de experiență" },
+    { icon: Coffee, text: "Mereu disponibil pentru o cafea ☕" },
+  ],
 };
 
 export default function About({ lang }: { lang: Lang }) {
@@ -61,7 +71,7 @@ export default function About({ lang }: { lang: Lang }) {
               {/* Online badge */}
               <div className="absolute -bottom-3 -right-3 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
                 <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                {lang === "it" ? "Disponibile" : "Available"}
+                {lang === "it" ? "Disponibile" : lang === "de" ? "Verfügbar" : lang === "ro" ? "Disponibil" : "Available"}
               </div>
             </div>
 

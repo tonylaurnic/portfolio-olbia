@@ -38,8 +38,7 @@ export default function Services({ lang }: { lang: Lang }) {
                   <Icon size={22} />
                 </div>
                 <h3 className="font-bold text-lg text-gray-900 mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm mb-4 leading-relaxed">{item.desc}</p>
-                <span className="text-blue-600 font-semibold text-sm">{item.price}</span>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             );
           })}

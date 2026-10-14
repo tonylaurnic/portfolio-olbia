@@ -52,7 +52,6 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
   const links = [
     { label: tr.services, href: "#services", id: "services" },
     { label: tr.portfolio, href: "#portfolio", id: "portfolio" },
-    { label: lang === "it" ? "Idee" : "Ideas", href: "/idee", id: "idee" },
     { label: tr.about, href: "#about", id: "about" },
     { label: tr.contact, href: "#contact", id: "contact" },
   ];

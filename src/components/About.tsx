@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { MapPin, Calendar, Coffee } from "lucide-react";
+import { MapPin, Calendar } from "lucide-react";
+import Logo from "@/components/Logo";
 import { Lang, t } from "@/lib/i18n";
 
 const skills = {
@@ -14,23 +14,19 @@ const skills = {
 const facts = {
   it: [
     { icon: MapPin, text: "Olbia, Sardegna" },
-    { icon: Calendar, text: "5+ anni come sviluppatore" },
-    { icon: Coffee, text: "18 anni come sushiman 🍣" },
+    { icon: Calendar, text: "5+ anni nello sviluppo software" },
   ],
   en: [
     { icon: MapPin, text: "Olbia, Sardinia" },
-    { icon: Calendar, text: "5+ years as developer" },
-    { icon: Coffee, text: "18 years as sushiman 🍣" },
+    { icon: Calendar, text: "5+ years in software development" },
   ],
   de: [
     { icon: MapPin, text: "Olbia, Sardinien" },
-    { icon: Calendar, text: "5+ Jahre als Entwickler" },
-    { icon: Coffee, text: "18 Jahre als Sushiman 🍣" },
+    { icon: Calendar, text: "5+ Jahre Softwareentwicklung" },
   ],
   ro: [
     { icon: MapPin, text: "Olbia, Sardinia" },
-    { icon: Calendar, text: "5+ ani ca dezvoltator" },
-    { icon: Coffee, text: "18 ani ca sushiman 🍣" },
+    { icon: Calendar, text: "5+ ani în dezvoltare software" },
   ],
 };
 
@@ -43,7 +39,7 @@ export default function About({ lang }: { lang: Lang }) {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-extrabold text-white mb-3">{tr.title}</h2>
           <p className="text-slate-400 text-lg">
-            {lang === "it" ? "La persona dietro ai progetti" : "The person behind the projects"}
+            {lang === "it" ? "Competenza tecnica e attenzione al cliente" : lang === "de" ? "Technisches Know-how und Kundenorientierung" : lang === "ro" ? "Competență tehnică și atenție la client" : "Technical expertise and client focus"}
           </p>
         </div>
 
@@ -58,24 +54,21 @@ export default function About({ lang }: { lang: Lang }) {
             className="flex flex-col items-center lg:items-start gap-6"
           >
             <div className="relative">
-              <div className="w-52 h-52 rounded-3xl overflow-hidden border-4 border-blue-500/30 shadow-2xl">
-                <Image
-                  src="/profile.jpg"
-                  alt="Antoniu Laurentiu Stratulat"
-                  fill
-                  className="object-cover object-center"
-                />
+              <div className="w-52 h-52 rounded-3xl border-4 border-blue-500/30 bg-white/5 shadow-2xl flex items-center justify-center">
+                <Logo size={44} />
               </div>
               {/* Online badge */}
               <div className="absolute -bottom-3 -right-3 bg-green-500 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-lg">
                 <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                {lang === "it" ? "Disponibile" : lang === "de" ? "Verfügbar" : lang === "ro" ? "Disponibil" : "Available"}
+                {lang === "it" ? "Disponibili" : lang === "de" ? "Verfügbar" : lang === "ro" ? "Disponibili" : "Available"}
               </div>
             </div>
 
             <div>
-              <h3 className="text-white font-extrabold text-2xl">Antoniu Laurentiu</h3>
-              <p className="text-blue-400 font-medium">Stratulat</p>
+              <h3 className="text-white font-extrabold text-2xl">Qui.SiteApp</h3>
+              <p className="text-blue-400 font-medium">
+                {lang === "it" ? "Studio di sviluppo web & mobile" : lang === "de" ? "Studio für Web- & Mobile-Entwicklung" : lang === "ro" ? "Studio de dezvoltare web & mobile" : "Web & mobile development studio"}
+              </p>
             </div>
 
             <div className="space-y-3 w-full">
@@ -102,7 +95,7 @@ export default function About({ lang }: { lang: Lang }) {
             className="lg:col-span-1"
           >
             <h3 className="text-white font-bold text-lg mb-4 border-l-4 border-blue-500 pl-3">
-              {lang === "it" ? "La mia storia" : "My story"}
+              {lang === "it" ? "Il nostro approccio" : lang === "de" ? "Unser Ansatz" : lang === "ro" ? "Abordarea noastră" : "Our approach"}
             </h3>
             <p className="text-slate-300 leading-relaxed mb-4">{tr.p1}</p>
             <p className="text-slate-300 leading-relaxed mb-6">{tr.p2}</p>

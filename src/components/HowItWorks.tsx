@@ -9,7 +9,7 @@ const steps = {
       icon: Phone,
       number: "01",
       title: "Chiamata gratuita",
-      desc: "Mi racconti il tuo progetto in una chiamata o su WhatsApp. Nessun impegno, nessun costo.",
+      desc: "Presentaci il tuo progetto con una chiamata o su WhatsApp. Senza impegno e senza costi.",
       color: "bg-blue-100 text-blue-600",
     },
     {
@@ -22,8 +22,8 @@ const steps = {
     {
       icon: Rocket,
       number: "03",
-      title: "Si parte!",
-      desc: "Iniziamo a lavorare. Ti aggiorno ad ogni step e consegno nei tempi concordati.",
+      title: "Sviluppo e consegna",
+      desc: "Avviamo il progetto, ti aggiorniamo a ogni fase e consegniamo nei tempi concordati.",
       color: "bg-green-100 text-green-600",
     },
   ],
@@ -32,7 +32,7 @@ const steps = {
       icon: Phone,
       number: "01",
       title: "Free call",
-      desc: "Tell me about your project in a call or on WhatsApp. No commitment, no cost.",
+      desc: "Tell us about your project in a call or on WhatsApp. No commitment, no cost.",
       color: "bg-blue-100 text-blue-600",
     },
     {
@@ -45,23 +45,23 @@ const steps = {
     {
       icon: Rocket,
       number: "03",
-      title: "Let's go!",
-      desc: "We start working. I update you at every step and deliver on time.",
+      title: "Development & delivery",
+      desc: "We start the project, keep you updated at every stage and deliver on schedule.",
       color: "bg-green-100 text-green-600",
     },
   ],
 };
 
 const steps_de = [
-  { icon: Phone, number: "01", title: "Kostenloses Gespräch", desc: "Erzählen Sie mir von Ihrem Projekt per Anruf oder WhatsApp. Keine Verpflichtung, keine Kosten.", color: "bg-blue-100 text-blue-600" },
+  { icon: Phone, number: "01", title: "Kostenloses Gespräch", desc: "Stellen Sie uns Ihr Projekt per Anruf oder WhatsApp vor. Unverbindlich und kostenlos.", color: "bg-blue-100 text-blue-600" },
   { icon: FileText, number: "02", title: "Angebot in 24h", desc: "Sie erhalten innerhalb von 24 Stunden ein klares Angebot. Festpreise, keine Überraschungen.", color: "bg-purple-100 text-purple-600" },
-  { icon: Rocket, number: "03", title: "Los geht's!", desc: "Wir beginnen zu arbeiten. Ich halte Sie auf dem Laufenden und liefere pünktlich.", color: "bg-green-100 text-green-600" },
+  { icon: Rocket, number: "03", title: "Entwicklung & Lieferung", desc: "Wir starten das Projekt, informieren Sie in jeder Phase und liefern termingerecht.", color: "bg-green-100 text-green-600" },
 ];
 
 const steps_ro = [
-  { icon: Phone, number: "01", title: "Apel gratuit", desc: "Îmi povestești despre proiect printr-un apel sau pe WhatsApp. Fără angajament, fără costuri.", color: "bg-blue-100 text-blue-600" },
+  { icon: Phone, number: "01", title: "Apel gratuit", desc: "Ne prezinți proiectul printr-un apel sau pe WhatsApp. Fără angajament, fără costuri.", color: "bg-blue-100 text-blue-600" },
   { icon: FileText, number: "02", title: "Ofertă în 24h", desc: "Primești o ofertă clară și detaliată în 24 de ore. Prețuri fixe, fără surprize.", color: "bg-purple-100 text-purple-600" },
-  { icon: Rocket, number: "03", title: "Să începem!", desc: "Începem să lucrăm. Te țin la curent la fiecare pas și livrez la timp.", color: "bg-green-100 text-green-600" },
+  { icon: Rocket, number: "03", title: "Dezvoltare și livrare", desc: "Demarăm proiectul, te ținem la curent la fiecare etapă și livrăm la termen.", color: "bg-green-100 text-green-600" },
 ];
 
 const titles = {
@@ -127,7 +127,7 @@ export default function HowItWorks({ lang }: { lang: Lang }) {
             href="#contact"
             className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg shadow-lg shadow-blue-100"
           >
-            {lang === "it" ? "Inizia ora — è gratis" : "Start now — it's free"}
+            {lang === "it" ? "Richiedi una consulenza gratuita" : lang === "de" ? "Kostenlose Beratung anfordern" : lang === "ro" ? "Solicită o consultanță gratuită" : "Request a free consultation"}
           </a>
         </motion.div>
       </div>

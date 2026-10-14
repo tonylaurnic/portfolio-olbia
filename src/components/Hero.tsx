@@ -1,15 +1,7 @@
 "use client";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, MapPin, Star, Briefcase, Users } from "lucide-react";
-import { useState, useEffect } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, MapPin, Star, Briefcase, Users, Zap, Wallet, Smartphone, Wrench } from "lucide-react";
 import { Lang, t } from "@/lib/i18n";
-
-const roles = {
-  it: ["Sviluppatore Web", "App Mobile", "Digital Signage", "Software Custom"],
-  en: ["Web Developer", "Mobile Apps", "Digital Signage", "Custom Software"],
-  de: ["Web-Entwickler", "Mobile Apps", "Digital Signage", "Software"],
-  ro: ["Dezvoltator Web", "App Mobile", "Digital Signage", "Software Custom"],
-};
 
 const stats = {
   it: [
@@ -34,17 +26,44 @@ const stats = {
   ],
 };
 
+const featureStyles = [
+  { icon: Zap, color: "from-yellow-400/20 to-orange-400/10 border-yellow-400/20" },
+  { icon: Wallet, color: "from-green-400/20 to-emerald-400/10 border-green-400/20" },
+  { icon: Smartphone, color: "from-blue-400/20 to-indigo-400/10 border-blue-400/20" },
+  { icon: Wrench, color: "from-purple-400/20 to-pink-400/10 border-purple-400/20" },
+];
+
+const features = {
+  it: [
+    { title: "Sito in 5 giorni", sub: "Tempi di consegna garantiti" },
+    { title: "Prezzi trasparenti", sub: "Costi fissi, nessuna sorpresa" },
+    { title: "Mobile & SEO inclusi", sub: "Ottimizzato per Google" },
+    { title: "Assistenza continua", sub: "Supporto dopo la consegna" },
+  ],
+  en: [
+    { title: "Site in 5 days", sub: "Guaranteed delivery times" },
+    { title: "Transparent pricing", sub: "Fixed costs, no surprises" },
+    { title: "Mobile & SEO included", sub: "Optimised for Google" },
+    { title: "Ongoing support", sub: "Assistance after delivery" },
+  ],
+  de: [
+    { title: "Website in 5 Tagen", sub: "Garantierte Lieferzeiten" },
+    { title: "Transparente Preise", sub: "Festpreise, keine Überraschungen" },
+    { title: "Mobile & SEO inklusive", sub: "Für Google optimiert" },
+    { title: "Laufender Support", sub: "Betreuung nach der Lieferung" },
+  ],
+  ro: [
+    { title: "Site în 5 zile", sub: "Termene de livrare garantate" },
+    { title: "Prețuri transparente", sub: "Costuri fixe, fără surprize" },
+    { title: "Mobile & SEO incluse", sub: "Optimizat pentru Google" },
+    { title: "Asistență continuă", sub: "Suport după livrare" },
+  ],
+};
+
 export default function Hero({ lang }: { lang: Lang }) {
   const tr = t[lang].hero;
   const s = stats[lang];
-  const [roleIndex, setRoleIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((i) => (i + 1) % roles[lang].length);
-    }, 2200);
-    return () => clearInterval(interval);
-  }, [lang]);
+  const reduceMotion = useReducedMotion();
 
   return (
     <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900 px-6 pt-16 overflow-hidden">
@@ -69,24 +88,9 @@ export default function Hero({ lang }: { lang: Lang }) {
             className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4"
           >
             <span className="text-slate-400 text-2xl md:text-3xl font-medium block mb-2">
-              {lang === "it" ? "👋 Ciao, sono" : lang === "de" ? "👋 Hallo, ich bin" : lang === "ro" ? "👋 Bună, sunt" : "👋 Hi, I'm"}
+              {lang === "it" ? "Studio digitale a Olbia" : lang === "de" ? "Digitalstudio in Olbia" : lang === "ro" ? "Studio digital în Olbia" : "Digital studio in Olbia"}
             </span>
-            <span className="text-white">Antoniu</span>{" "}
-            <br className="hidden md:block" />
-            <span className="relative inline-block">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={roleIndex}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.35 }}
-                  className="text-blue-400 inline-block"
-                >
-                  {roles[lang][roleIndex]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
+            <span className="text-white">Qui.SiteApp</span>
           </motion.h1>
 
           <motion.div
@@ -98,6 +102,50 @@ export default function Hero({ lang }: { lang: Lang }) {
             <MapPin size={16} />
             <span>{tr.location}</span>
           </motion.div>
+
+          {/* Promo banner */}
+          <motion.a
+            href="#contact"
+            initial={{ opacity: 0, scale: 0.6, rotate: -4 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ type: "spring", stiffness: 260, damping: 14, delay: 0.3 }}
+            className="relative block w-fit mb-6 mt-2"
+          >
+            <motion.div
+              animate={reduceMotion ? undefined : { scale: [1, 1.04, 1] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 via-red-500 to-pink-600 px-6 py-4 shadow-2xl shadow-red-900/50"
+            >
+              {/* Shine sweep */}
+              {!reduceMotion && (
+                <motion.span
+                  aria-hidden
+                  initial={{ x: "-150%" }}
+                  animate={{ x: "250%" }}
+                  transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 1.6, ease: "easeInOut" }}
+                  className="absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                />
+              )}
+              <p className="relative text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-none">
+                {tr.slogan}
+              </p>
+              <p className="relative mt-2 flex items-baseline gap-2 text-white">
+                <span className="text-base md:text-lg font-semibold text-white/90">{tr.promoFrom}</span>
+                <span className="text-5xl md:text-6xl font-black leading-none text-yellow-300 drop-shadow-[0_2px_0_rgba(0,0,0,0.25)]">
+                  {tr.promoPrice}
+                </span>
+              </p>
+            </motion.div>
+
+            {/* Tag */}
+            <motion.span
+              animate={reduceMotion ? undefined : { rotate: [12, 6, 12] }}
+              transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -top-3 -right-4 rotate-12 bg-yellow-300 text-red-700 text-xs font-black uppercase px-3 py-1 rounded-full shadow-lg"
+            >
+              {tr.promoTag}
+            </motion.span>
+          </motion.a>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
@@ -171,31 +219,29 @@ export default function Hero({ lang }: { lang: Lang }) {
               <span className="text-white/50 text-xs font-medium uppercase tracking-widest">Qui.SiteApp</span>
               <span className="flex items-center gap-1.5 text-green-400 text-xs font-semibold">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                {lang === "it" ? "Online ora" : "Online now"}
+                {lang === "it" ? "Online ora" : lang === "de" ? "Jetzt online" : lang === "ro" ? "Online acum" : "Online now"}
               </span>
             </div>
 
             {/* Feature rows */}
-            {[
-              { emoji: "⚡", title: lang === "it" ? "Sito in 5 giorni" : "Site in 5 days", sub: lang === "it" ? "Consegna rapida garantita" : "Fast delivery guaranteed", color: "from-yellow-400/20 to-orange-400/10 border-yellow-400/20" },
-              { emoji: "💶", title: lang === "it" ? "Costi minimi" : "Minimal costs", sub: lang === "it" ? "Prezzi fissi, nessuna sorpresa" : "Fixed prices, no surprises", color: "from-green-400/20 to-emerald-400/10 border-green-400/20" },
-              { emoji: "📱", title: lang === "it" ? "Mobile & SEO inclusi" : "Mobile & SEO included", sub: lang === "it" ? "Ottimizzato per Google" : "Optimised for Google", color: "from-blue-400/20 to-indigo-400/10 border-blue-400/20" },
-              { emoji: "🛠️", title: lang === "it" ? "Supporto continuo" : "Ongoing support", sub: lang === "it" ? "Sempre disponibile per te" : "Always here for you", color: "from-purple-400/20 to-pink-400/10 border-purple-400/20" },
-            ].map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5 + i * 0.12 }}
-                className={`flex items-center gap-3 bg-gradient-to-r ${item.color} border rounded-2xl px-4 py-3`}
-              >
-                <span className="text-2xl">{item.emoji}</span>
-                <div>
-                  <p className="text-white font-bold text-sm leading-tight">{item.title}</p>
-                  <p className="text-white/50 text-xs mt-0.5">{item.sub}</p>
-                </div>
-              </motion.div>
-            ))}
+            {features[lang].map((item, i) => {
+              const Icon = featureStyles[i].icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 + i * 0.12 }}
+                  className={`flex items-center gap-3 bg-gradient-to-r ${featureStyles[i].color} border rounded-2xl px-4 py-3`}
+                >
+                  <Icon size={22} className="text-white/80 shrink-0" />
+                  <div>
+                    <p className="text-white font-bold text-sm leading-tight">{item.title}</p>
+                    <p className="text-white/50 text-xs mt-0.5">{item.sub}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
 
             {/* CTA inside card */}
             <motion.a
@@ -205,7 +251,7 @@ export default function Hero({ lang }: { lang: Lang }) {
               transition={{ delay: 1.1 }}
               className="mt-1 w-full text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 rounded-2xl text-sm transition-colors"
             >
-              {lang === "it" ? "Preventivo gratuito →" : "Free quote →"}
+              {lang === "it" ? "Preventivo gratuito →" : lang === "de" ? "Kostenloses Angebot →" : lang === "ro" ? "Ofertă gratuită →" : "Free quote →"}
             </motion.a>
           </div>
         </motion.div>

@@ -52,7 +52,7 @@ const projects: Project[] = [
       de: "Ihr TV-Bildschirm wird zum Marketingtool. Zeigen Sie Menüs, Angebote, Fotos und Aktionen — alles vom Handy in Sekunden aktualisierbar.",
       ro: "Ecranul tău TV devine un instrument de marketing. Afișezi meniuri, oferte, fotografii și promoții — actualizezi totul de pe telefon în câteva secunde.",
     },
-    result: { it: "Già in uso in ristoranti e locali in Sardegna", en: "Already in use in restaurants and venues in Sardinia", de: "Bereits in Restaurants und Lokalen auf Sardinien im Einsatz", ro: "Deja folosit în restaurante și localuri din Sardinia" },
+    result: { it: "Progetto reale completato", en: "Real project — completed", de: "Echtes Projekt — fertiggestellt", ro: "Proiect real — finalizat" },
     tags: ["Schermo TV", "Menu Digitale", "Promozioni Live", "Aggiornamento da telefono"],
     color: "from-violet-600 to-purple-800",
     image: "/dysign-preview.png",

@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Send, Mail, Globe, Smartphone, Tv, Code2, CheckCircle2, Lightbulb } from "lucide-react";
-import IdeeModal from "@/components/IdeeModal";
+import { MessageCircle, Send, Mail, Globe, Smartphone, Tv, Code2, CheckCircle2 } from "lucide-react";
 import { Lang, t } from "@/lib/i18n";
 
 const WHATSAPP_NUMBER = "393883879487";
@@ -11,7 +10,7 @@ const EMAIL = "dysign.soluzioni@gmail.com";
 const content = {
   it: {
     title: "Richiedi un preventivo",
-    subtitle: "Compila il modulo — ti rispondo entro 24h con un preventivo gratuito.",
+    subtitle: "Compila il modulo: riceverai entro 24 ore un preventivo gratuito.",
     yourName: "Il tuo nome *",
     businessName: "Nome dell'attività *",
     email: "Email *",
@@ -22,7 +21,7 @@ const content = {
     send: "Invia richiesta",
     whatsapp: "Preferisci WhatsApp?",
     orForm: "oppure compila il modulo",
-    sent: "✓ Richiesta inviata! Ti contatto entro 24h.",
+    sent: "✓ Richiesta inviata. Ti ricontatteremo entro 24 ore.",
     projectTypes: [
       { value: "web", label: "Sito Web", icon: Globe },
       { value: "app", label: "App Mobile", icon: Smartphone },
@@ -43,7 +42,7 @@ const content = {
   },
   en: {
     title: "Request a quote",
-    subtitle: "Fill in the form — I'll reply within 24h with a free quote.",
+    subtitle: "Fill in the form and you will receive a free quote within 24 hours.",
     yourName: "Your name *",
     businessName: "Business name *",
     email: "Email *",
@@ -54,7 +53,7 @@ const content = {
     send: "Send request",
     whatsapp: "Prefer WhatsApp?",
     orForm: "or fill in the form",
-    sent: "✓ Request sent! I'll get back to you within 24h.",
+    sent: "✓ Request sent. We will get back to you within 24 hours.",
     projectTypes: [
       { value: "web", label: "Website", icon: Globe },
       { value: "app", label: "Mobile App", icon: Smartphone },
@@ -75,7 +74,7 @@ const content = {
   },
   de: {
     title: "Angebot anfordern",
-    subtitle: "Formular ausfüllen — ich antworte innerhalb von 24h mit einem kostenlosen Angebot.",
+    subtitle: "Füllen Sie das Formular aus – Sie erhalten innerhalb von 24 Stunden ein kostenloses Angebot.",
     yourName: "Ihr Name *",
     businessName: "Unternehmensname *",
     email: "E-Mail *",
@@ -86,7 +85,7 @@ const content = {
     send: "Anfrage senden",
     whatsapp: "Lieber WhatsApp?",
     orForm: "oder Formular ausfüllen",
-    sent: "✓ Anfrage gesendet! Ich melde mich innerhalb von 24h.",
+    sent: "✓ Anfrage gesendet. Wir melden uns innerhalb von 24 Stunden.",
     projectTypes: [
       { value: "web", label: "Website", icon: Globe },
       { value: "app", label: "Mobile App", icon: Smartphone },
@@ -107,7 +106,7 @@ const content = {
   },
   ro: {
     title: "Solicită o ofertă",
-    subtitle: "Completează formularul — îți răspund în 24h cu o ofertă gratuită.",
+    subtitle: "Completează formularul și vei primi o ofertă gratuită în 24 de ore.",
     yourName: "Numele tău *",
     businessName: "Numele afacerii *",
     email: "Email *",
@@ -118,7 +117,7 @@ const content = {
     send: "Trimite cererea",
     whatsapp: "Preferi WhatsApp?",
     orForm: "sau completează formularul",
-    sent: "✓ Cerere trimisă! Te contactez în 24h.",
+    sent: "✓ Cerere trimisă. Te vom contacta în 24 de ore.",
     projectTypes: [
       { value: "web", label: "Site Web", icon: Globe },
       { value: "app", label: "App Mobile", icon: Smartphone },
@@ -169,9 +168,10 @@ function OptionCard({
 export default function Contact({ lang }: { lang: Lang }) {
   const tr = content[lang];
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    lang === "it"
-      ? "Ciao! Ho visto il tuo portfolio e vorrei un preventivo."
-      : "Hi! I saw your portfolio and I'd like a quote."
+    lang === "it" ? "Buongiorno, ho visitato il sito Qui.SiteApp e vorrei richiedere un preventivo."
+      : lang === "de" ? "Guten Tag, ich habe die Website von Qui.SiteApp besucht und möchte ein Angebot anfordern."
+      : lang === "ro" ? "Bună ziua, am vizitat site-ul Qui.SiteApp și aș dori să solicit o ofertă."
+      : "Hello, I visited the Qui.SiteApp website and would like to request a quote."
   )}`;
 
   const [form, setForm] = useState({
@@ -184,7 +184,6 @@ export default function Contact({ lang }: { lang: Lang }) {
     notes: "",
   });
   const [sent, setSent] = useState(false);
-  const [ideeOpen, setIdeeOpen] = useState(false);
 
   function set(key: string, value: string) {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -285,25 +284,8 @@ export default function Contact({ lang }: { lang: Lang }) {
             </div>
 
             {/* Project type */}
-            {ideeOpen && (
-              <IdeeModal
-                lang={lang}
-                onSelect={(val) => { set("notes", val); }}
-                onClose={() => setIdeeOpen(false)}
-              />
-            )}
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <label className="block text-sm font-medium text-gray-700">{tr.projectType}</label>
-                <button
-                  type="button"
-                  onClick={() => setIdeeOpen(true)}
-                  className="flex items-center gap-1.5 text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors"
-                >
-                  <Lightbulb size={13} />
-                  {lang === "it" ? "Sfoglia le idee" : lang === "de" ? "Ideen ansehen" : lang === "ro" ? "Răsfoiește ideile" : "Browse ideas"}
-                </button>
-              </div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">{tr.projectType}</label>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                 {tr.projectTypes.map((p) => {
                   const Icon = p.icon;

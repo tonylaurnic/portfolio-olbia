@@ -34,11 +34,12 @@ export default function Footer({ lang }: { lang: Lang }) {
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10">
           <div className="flex flex-col items-center md:items-start gap-3">
             <Logo size={34} />
+            <p className="text-sm font-semibold text-blue-400">{t[lang].hero.slogan} {t[lang].hero.promoFrom} {t[lang].hero.promoPrice}</p>
             <p className="text-sm text-gray-500 max-w-xs text-center md:text-left">
-              {lang === "it" ? "Sviluppatore freelance a Olbia, Sardegna."
-                : lang === "de" ? "Freiberuflicher Entwickler in Olbia, Sardinien."
-                : lang === "ro" ? "Dezvoltator freelance în Olbia, Sardinia."
-                : "Freelance developer in Olbia, Sardinia."}
+              {lang === "it" ? "Sviluppo web, mobile e digital signage a Olbia, Sardegna."
+                : lang === "de" ? "Web-, Mobile- und Digital-Signage-Entwicklung in Olbia, Sardinien."
+                : lang === "ro" ? "Dezvoltare web, mobile și digital signage în Olbia, Sardinia."
+                : "Web, mobile and digital signage development in Olbia, Sardinia."}
             </p>
           </div>
 
@@ -62,7 +63,7 @@ export default function Footer({ lang }: { lang: Lang }) {
         </div>
 
         <div className="border-t border-white/5 pt-6 text-center text-xs text-gray-600">
-          © {year} Qui.SiteApp — Antoniu Laurentiu Stratulat — {t[lang].footer.rights}
+          © {year} Qui.SiteApp — {t[lang].footer.rights}
         </div>
       </div>
     </footer>

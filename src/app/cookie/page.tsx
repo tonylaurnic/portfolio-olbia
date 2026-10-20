@@ -53,7 +53,7 @@ export default function Cookie() {
 
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Contatti</h2>
-          <p>Per qualsiasi domanda sui cookie scrivi a: <a href="mailto:dysign.soluzioni@gmail.com" className="text-blue-600 hover:underline">dysign.soluzioni@gmail.com</a></p>
+          <p>Per qualsiasi domanda sui cookie scrivi a: <a href="mailto:info@quisiteapp.it" className="text-blue-600 hover:underline">info@quisiteapp.it</a></p>
           <p className="text-sm text-gray-400 mt-2">Ultimo aggiornamento: maggio 2026</p>
         </div>
       </section>

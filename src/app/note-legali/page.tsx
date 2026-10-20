@@ -11,13 +11,14 @@ export default function NoteLegali() {
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Titolare del sito</h2>
           <p>Antoniu Laurentiu Stratulat</p>
-          <p>Libero professionista — Contratto individuale</p>
-          <p>Olbia (OT), Sardegna — Italia</p>
+          <p>Impresa individuale</p>
+          <p>Olbia (SS), Sardegna — Italia</p>
+          <p>P.IVA 03091990907 — REA SS-228962</p>
         </div>
 
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Contatti</h2>
-          <p>Email: <a href="mailto:dysign.soluzioni@gmail.com" className="text-blue-600 hover:underline">dysign.soluzioni@gmail.com</a></p>
+          <p>Email: <a href="mailto:info@quisiteapp.it" className="text-blue-600 hover:underline">info@quisiteapp.it</a></p>
           <p>WhatsApp: <a href="https://wa.me/393883879487" className="text-blue-600 hover:underline">+39 388 387 9487</a></p>
         </div>
 

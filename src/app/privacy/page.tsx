@@ -11,7 +11,7 @@ export default function Privacy() {
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Titolare del trattamento</h2>
           <p>Antoniu Laurentiu Stratulat — Olbia (OT), Italia</p>
-          <p>Email: <a href="mailto:dysign.soluzioni@gmail.com" className="text-blue-600 hover:underline">dysign.soluzioni@gmail.com</a></p>
+          <p>Email: <a href="mailto:info@quisiteapp.it" className="text-blue-600 hover:underline">info@quisiteapp.it</a></p>
         </div>
 
         <div>
@@ -38,7 +38,7 @@ export default function Privacy() {
 
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Diritti dell'interessato</h2>
-          <p>Hai il diritto di accedere ai tuoi dati, rettificarli, cancellarli o opporti al loro trattamento. Per esercitare questi diritti scrivi a: <a href="mailto:dysign.soluzioni@gmail.com" className="text-blue-600 hover:underline">dysign.soluzioni@gmail.com</a></p>
+          <p>Hai il diritto di accedere ai tuoi dati, rettificarli, cancellarli o opporti al loro trattamento. Per esercitare questi diritti scrivi a: <a href="mailto:info@quisiteapp.it" className="text-blue-600 hover:underline">info@quisiteapp.it</a></p>
         </div>
 
         <div>

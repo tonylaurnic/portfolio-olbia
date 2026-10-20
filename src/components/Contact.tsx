@@ -5,7 +5,7 @@ import { MessageCircle, Send, Mail, Globe, Smartphone, Tv, Code2, CheckCircle2 }
 import { Lang, t } from "@/lib/i18n";
 
 const WHATSAPP_NUMBER = "393883879487";
-const EMAIL = "dysign.soluzioni@gmail.com";
+const EMAIL = "info@quisiteapp.it";
 
 const content = {
   it: {

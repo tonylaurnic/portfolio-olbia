@@ -63,7 +63,7 @@ export default function Footer({ lang }: { lang: Lang }) {
         </div>
 
         <div className="border-t border-white/5 pt-6 text-center text-xs text-gray-600">
-          © {year} Qui.SiteApp — {t[lang].footer.rights}
+          © {year} Qui.SiteApp — P.IVA 03091990907 — {t[lang].footer.rights}
         </div>
       </div>
     </footer>

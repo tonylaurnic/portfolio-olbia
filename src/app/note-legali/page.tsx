@@ -12,7 +12,7 @@ export default function NoteLegali() {
           <h2 className="font-bold text-gray-900 text-lg mb-2">Titolare del sito</h2>
           <p>Antoniu Laurentiu Stratulat</p>
           <p>Impresa individuale</p>
-          <p>Olbia (SS), Sardegna — Italia</p>
+          <p>Via Fra Giacomo Veronese, 07026 Olbia (SS), Sardegna — Italia</p>
           <p>P.IVA 03091990907 — REA SS-228962</p>
         </div>
 

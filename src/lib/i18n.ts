@@ -22,7 +22,7 @@ export const t = {
         { title: "Soluzione su misura", desc: "Programmi gestionali, negozi online e strumenti interni realizzati su misura, a partire dalle esigenze specifiche della tua azienda." },
       ],
     },
-    portfolio: { title: "Progetti realizzati", subtitle: "Progetti reali, per clienti reali", viewProject: "Vedi progetto" },
+    portfolio: { title: "Progetti realizzati", subtitle: "Siti web, app e lavagne elettroniche", viewProject: "Vedi progetto" },
     about: {
       title: "Lo studio",
       p1: "Qui.SiteApp è uno studio di siti web e app con sede a Olbia, in Sardegna. Realizziamo siti, applicazioni e sistemi digitali per aziende, professionisti e attività locali.",
@@ -60,7 +60,7 @@ export const t = {
         { title: "Custom Solution", desc: "Management software, online shops and internal tools built to order, starting from your company's specific requirements." },
       ],
     },
-    portfolio: { title: "Our projects", subtitle: "Real projects, for real clients", viewProject: "View project" },
+    portfolio: { title: "Our projects", subtitle: "Websites, apps and in-store screens", viewProject: "View project" },
     about: {
       title: "About us",
       p1: "Qui.SiteApp is a website and app studio based in Olbia, Sardinia. We build websites, apps and digital systems for companies, professionals and local businesses.",
@@ -98,7 +98,7 @@ export const t = {
         { title: "Individuelle Lösung", desc: "Verwaltungsprogramme, Onlineshops und interne Lösungen nach Maß, entwickelt auf Basis der spezifischen Anforderungen Ihres Unternehmens." },
       ],
     },
-    portfolio: { title: "Unsere Projekte", subtitle: "Echte Projekte, für echte Kunden", viewProject: "Projekt ansehen" },
+    portfolio: { title: "Unsere Projekte", subtitle: "Websites, Apps und Bildschirme für Geschäfte", viewProject: "Projekt ansehen" },
     about: {
       title: "Über uns",
       p1: "Qui.SiteApp ist ein Studio für Websites und Apps mit Sitz in Olbia, Sardinien. Wir realisieren Websites, Apps und digitale Systeme für Unternehmen, Freiberufler und lokale Betriebe.",
@@ -136,7 +136,7 @@ export const t = {
         { title: "Soluție personalizată", desc: "Programe de gestiune, magazine online și instrumente interne realizate la comandă, pornind de la cerințele specifice ale companiei tale." },
       ],
     },
-    portfolio: { title: "Proiectele noastre", subtitle: "Proiecte reale, pentru clienți reali", viewProject: "Vezi proiectul" },
+    portfolio: { title: "Proiectele noastre", subtitle: "Site-uri web, aplicații și ecrane pentru localuri", viewProject: "Vezi proiectul" },
     about: {
       title: "Despre noi",
       p1: "Qui.SiteApp este un studio de site-uri web și aplicații cu sediul în Olbia, Sardinia. Realizăm site-uri, aplicații și sisteme digitale pentru companii, profesioniști și afaceri locale.",

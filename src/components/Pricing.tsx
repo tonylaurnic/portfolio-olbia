@@ -165,7 +165,7 @@ const content: Record<Lang, Content> = {
       waBusiness: "Attività",
       waEmail: "Email",
       waNotes: "Note",
-      deliveryNote: "Tempi indicativi: la data di consegna viene confermata nel preventivo ufficiale. I giorni si contano dal pagamento dell'anticipo e dalla ricezione di tutti i materiali.",
+      deliveryNote: "Tempi indicativi: la data di consegna viene confermata nel preventivo ufficiale. I giorni si contano dal primo pagamento e dalla ricezione di tutti i materiali.",
     },
     termsTitle: "Condizioni di fornitura",
     terms: [
@@ -276,7 +276,7 @@ const content: Record<Lang, Content> = {
       waBusiness: "Business",
       waEmail: "Email",
       waNotes: "Notes",
-      deliveryNote: "Indicative times: the delivery date is confirmed in the quote. Days are counted from receipt of the deposit and all materials.",
+      deliveryNote: "Indicative times: the delivery date is confirmed in the quote. Days are counted from receipt of the first payment and all materials.",
     },
     termsTitle: "Terms of supply",
     terms: [
@@ -387,7 +387,7 @@ const content: Record<Lang, Content> = {
       waBusiness: "Unternehmen",
       waEmail: "E-Mail",
       waNotes: "Notizen",
-      deliveryNote: "Unverbindliche Zeitangabe: Der Liefertermin wird im Angebot bestätigt. Die Tage zählen ab Eingang der Anzahlung und aller Materialien.",
+      deliveryNote: "Unverbindliche Zeitangabe: Der Liefertermin wird im Angebot bestätigt. Die Tage zählen ab Eingang der ersten Zahlung und aller Materialien.",
     },
     termsTitle: "Lieferbedingungen",
     terms: [
@@ -498,7 +498,7 @@ const content: Record<Lang, Content> = {
       waBusiness: "Afacere",
       waEmail: "Email",
       waNotes: "Note",
-      deliveryNote: "Termene orientative: data livrării se confirmă în ofertă. Zilele se numără de la primirea avansului și a tuturor materialelor.",
+      deliveryNote: "Termene orientative: data livrării se confirmă în ofertă. Zilele se numără de la primirea primei plăți și a tuturor materialelor.",
     },
     termsTitle: "Condiții de furnizare",
     terms: [
@@ -626,7 +626,7 @@ function PriceCalculator({ lang, c }: { lang: Lang; c: Content }) {
       : []),
     ...(care === null ? [] : [`${c.careTitle}: ${c.plans[care].name}`]),
     `${c.calc.estimate}: ${estimate}`,
-    deposit,
+    ...(isBase ? [] : [deposit]),
     delivery,
     ...(details.notes.trim() ? [`${c.calc.waNotes}: ${details.notes.trim()}`] : []),
   ].join("\n");
@@ -754,7 +754,7 @@ function PriceCalculator({ lang, c }: { lang: Lang; c: Content }) {
         <p className="text-sm font-semibold text-gray-500">{c.calc.estimate}</p>
         <p className="text-2xl md:text-3xl font-extrabold text-blue-600">{estimate}</p>
         {careLine && <p className="font-semibold text-gray-700">{careLine}</p>}
-        <p className="font-semibold text-gray-700">{deposit}</p>
+        {!isBase && <p className="font-semibold text-gray-700">{deposit}</p>}
         <p className="font-semibold text-gray-700">{delivery}</p>
         <p className="text-xs text-gray-500 mt-2">{c.calc.disclaimer}</p>
         <p className="text-xs text-gray-500 mt-1">{c.calc.deliveryNote}</p>

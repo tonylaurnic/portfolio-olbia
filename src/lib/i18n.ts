@@ -2,13 +2,13 @@ export type Lang = "it" | "en" | "de" | "ro";
 
 export const t = {
   it: {
-    nav: { services: "Servizi", portfolio: "Portfolio", about: "Lo studio", contact: "Contatti" },
+    nav: { home: "Home", services: "Servizi", portfolio: "Portfolio", about: "Lo studio", pricing: "Prezzi", contact: "Contatti" },
     hero: {
       badge: "Disponibili per nuovi progetti",
-      title: "Sviluppo Web, Mobile & Digital Signage",
+      title: "Siti web, app e lavagne elettroniche",
       location: "Olbia, Sardegna",
       slogan: "Un sito per tutti!", promoFrom: "A partire da", promoPrice: "€100", promoTag: "Offerta",
-      subtitle: "Progettiamo e sviluppiamo siti web, app e soluzioni di digital signage per aziende e attività locali. Tecnologia affidabile, risultati misurabili.",
+      subtitle: "Progettiamo e realizziamo siti web, app e lavagne elettroniche per negozi e ristoranti, al servizio di aziende e attività locali. Tecnologia affidabile, risultati misurabili.",
       cta: "Richiedi un preventivo gratuito",
       ctaSecondary: "Vedi i progetti",
     },
@@ -17,15 +17,15 @@ export const t = {
       subtitle: "Soluzioni digitali su misura per la crescita della tua attività",
       items: [
         { title: "Sito Web", desc: "Un sito professionale, veloce e ottimizzato per Google, progettato per trasformare i visitatori in clienti." },
-        { title: "App per smartphone", desc: "Applicazioni per iOS e Android, intuitive e curate nel design, pensate per l'uso quotidiano dei tuoi clienti." },
-        { title: "Schermo digitale (TV)", desc: "Schermi per negozi, hotel e ristoranti che mostrano offerte, menu e comunicazioni, con contenuti aggiornabili da remoto." },
-        { title: "Soluzione su misura", desc: "Gestionali, e-commerce e sistemi interni sviluppati su misura, a partire dalle esigenze specifiche della tua azienda." },
+        { title: "App per smartphone", desc: "App per iPhone e Android, intuitive e curate nel design, pensate per l'uso quotidiano dei tuoi clienti." },
+        { title: "Lavagna elettronica", desc: "Schermi TV per negozi, hotel e ristoranti che mostrano offerte, menu e comunicazioni, con contenuti che puoi aggiornare anche a distanza." },
+        { title: "Soluzione su misura", desc: "Programmi gestionali, negozi online e strumenti interni realizzati su misura, a partire dalle esigenze specifiche della tua azienda." },
       ],
     },
     portfolio: { title: "Progetti realizzati", subtitle: "Progetti reali, per clienti reali", viewProject: "Vedi progetto" },
     about: {
       title: "Lo studio",
-      p1: "Qui.SiteApp è uno studio di sviluppo web e mobile con sede a Olbia, in Sardegna. Realizziamo siti, applicazioni e sistemi digitali per aziende, professionisti e attività locali.",
+      p1: "Qui.SiteApp è uno studio di siti web e app con sede a Olbia, in Sardegna. Realizziamo siti, applicazioni e sistemi digitali per aziende, professionisti e attività locali.",
       p2: "Seguiamo ogni progetto dall'analisi iniziale alla pubblicazione, con un approccio chiaro e orientato ai risultati. Progettiamo soluzioni che rispondono alle esigenze reali di ogni cliente, dal piccolo negozio all'azienda strutturata.",
       skills: "Competenze",
     },
@@ -40,13 +40,13 @@ export const t = {
   },
 
   en: {
-    nav: { services: "Services", portfolio: "Portfolio", about: "About us", contact: "Contact" },
+    nav: { home: "Home", services: "Services", portfolio: "Portfolio", about: "About us", pricing: "Pricing", contact: "Contact" },
     hero: {
       badge: "Available for new projects",
-      title: "Web, Mobile & Digital Signage",
+      title: "Websites, apps and in-store screens",
       location: "Olbia, Sardinia",
       slogan: "A website for everyone!", promoFrom: "Starting from", promoPrice: "€100", promoTag: "Special offer",
-      subtitle: "We design and build websites, apps and digital signage solutions for companies and local businesses. Reliable technology, measurable results.",
+      subtitle: "We design and build websites, apps and in-store screens for companies and local businesses. Reliable technology, measurable results.",
       cta: "Get a free quote",
       ctaSecondary: "View projects",
     },
@@ -55,15 +55,15 @@ export const t = {
       subtitle: "Tailored digital solutions to grow your business",
       items: [
         { title: "Website", desc: "A professional, fast, Google-optimised website designed to turn visitors into customers." },
-        { title: "Smartphone App", desc: "iOS and Android apps with an intuitive, polished design, built for your customers' everyday use." },
+        { title: "Smartphone App", desc: "iPhone and Android apps with an intuitive, polished design, built for your customers' everyday use." },
         { title: "Digital Screen (TV)", desc: "Screens for shops, hotels and restaurants that display offers, menus and announcements, with content you can update remotely." },
-        { title: "Custom Solution", desc: "Management tools, e-commerce and internal systems built to order, starting from your company's specific requirements." },
+        { title: "Custom Solution", desc: "Management software, online shops and internal tools built to order, starting from your company's specific requirements." },
       ],
     },
     portfolio: { title: "Our projects", subtitle: "Real projects, for real clients", viewProject: "View project" },
     about: {
       title: "About us",
-      p1: "Qui.SiteApp is a web and mobile development studio based in Olbia, Sardinia. We build websites, apps and digital systems for companies, professionals and local businesses.",
+      p1: "Qui.SiteApp is a website and app studio based in Olbia, Sardinia. We build websites, apps and digital systems for companies, professionals and local businesses.",
       p2: "We follow every project from the initial analysis to launch, with a clear, results-driven approach. We design solutions that meet each client's real needs, from small shops to established companies.",
       skills: "Expertise",
     },
@@ -78,13 +78,13 @@ export const t = {
   },
 
   de: {
-    nav: { services: "Leistungen", portfolio: "Portfolio", about: "Über uns", contact: "Kontakt" },
+    nav: { home: "Start", services: "Leistungen", portfolio: "Portfolio", about: "Über uns", pricing: "Preise", contact: "Kontakt" },
     hero: {
       badge: "Verfügbar für neue Projekte",
-      title: "Web-, Mobile- & Digital-Signage-Entwicklung",
+      title: "Websites, Apps und Bildschirme für Geschäfte",
       location: "Olbia, Sardinien",
       slogan: "Eine Website für alle!", promoFrom: "Ab nur", promoPrice: "€100", promoTag: "Angebot",
-      subtitle: "Wir konzipieren und entwickeln Websites, Apps und Digital-Signage-Lösungen für Unternehmen und lokale Betriebe. Zuverlässige Technologie, messbare Ergebnisse.",
+      subtitle: "Wir gestalten und erstellen Websites, Apps und Bildschirme für Geschäfte und Restaurants – für Unternehmen und lokale Betriebe. Zuverlässige Technologie, messbare Ergebnisse.",
       cta: "Kostenloses Angebot anfordern",
       ctaSecondary: "Projekte ansehen",
     },
@@ -93,15 +93,15 @@ export const t = {
       subtitle: "Maßgeschneiderte digitale Lösungen für Ihr Unternehmenswachstum",
       items: [
         { title: "Website", desc: "Eine professionelle, schnelle und für Google optimierte Website, die Besucher zu Kunden macht." },
-        { title: "Smartphone-App", desc: "Apps für iOS und Android mit intuitivem, hochwertigem Design für die tägliche Nutzung durch Ihre Kunden." },
+        { title: "Smartphone-App", desc: "Apps für iPhone und Android mit intuitivem, hochwertigem Design für die tägliche Nutzung durch Ihre Kunden." },
         { title: "Digitaler Bildschirm (TV)", desc: "Bildschirme für Geschäfte, Hotels und Restaurants, die Angebote, Menüs und Mitteilungen zeigen – mit aus der Ferne aktualisierbaren Inhalten." },
-        { title: "Individuelle Lösung", desc: "Verwaltungssysteme, E-Commerce und interne Lösungen nach Maß, entwickelt auf Basis der spezifischen Anforderungen Ihres Unternehmens." },
+        { title: "Individuelle Lösung", desc: "Verwaltungsprogramme, Onlineshops und interne Lösungen nach Maß, entwickelt auf Basis der spezifischen Anforderungen Ihres Unternehmens." },
       ],
     },
     portfolio: { title: "Unsere Projekte", subtitle: "Echte Projekte, für echte Kunden", viewProject: "Projekt ansehen" },
     about: {
       title: "Über uns",
-      p1: "Qui.SiteApp ist ein Studio für Web- und Mobile-Entwicklung mit Sitz in Olbia, Sardinien. Wir realisieren Websites, Apps und digitale Systeme für Unternehmen, Freiberufler und lokale Betriebe.",
+      p1: "Qui.SiteApp ist ein Studio für Websites und Apps mit Sitz in Olbia, Sardinien. Wir realisieren Websites, Apps und digitale Systeme für Unternehmen, Freiberufler und lokale Betriebe.",
       p2: "Wir begleiten jedes Projekt von der ersten Analyse bis zur Veröffentlichung – mit einem klaren, ergebnisorientierten Ansatz. Unsere Lösungen richten sich nach den tatsächlichen Anforderungen jedes Kunden, vom kleinen Geschäft bis zum etablierten Unternehmen.",
       skills: "Kompetenzen",
     },
@@ -116,13 +116,13 @@ export const t = {
   },
 
   ro: {
-    nav: { services: "Servicii", portfolio: "Portofoliu", about: "Despre noi", contact: "Contact" },
+    nav: { home: "Acasă", services: "Servicii", portfolio: "Portofoliu", about: "Despre noi", pricing: "Prețuri", contact: "Contact" },
     hero: {
       badge: "Disponibili pentru proiecte noi",
-      title: "Dezvoltare Web, Mobile & Digital Signage",
+      title: "Site-uri web, aplicații și ecrane pentru localuri",
       location: "Olbia, Sardinia",
       slogan: "Un site pentru toți!", promoFrom: "Începând de la", promoPrice: "€100", promoTag: "Ofertă",
-      subtitle: "Proiectăm și dezvoltăm site-uri web, aplicații și soluții de digital signage pentru companii și afaceri locale. Tehnologie fiabilă, rezultate măsurabile.",
+      subtitle: "Proiectăm și realizăm site-uri web, aplicații și ecrane pentru magazine și restaurante, pentru companii și afaceri locale. Tehnologie fiabilă, rezultate măsurabile.",
       cta: "Solicită o ofertă gratuită",
       ctaSecondary: "Vezi proiectele",
     },
@@ -131,15 +131,15 @@ export const t = {
       subtitle: "Soluții digitale personalizate pentru creșterea afacerii tale",
       items: [
         { title: "Site Web", desc: "Un site profesional, rapid și optimizat pentru Google, conceput pentru a transforma vizitatorii în clienți." },
-        { title: "Aplicație smartphone", desc: "Aplicații iOS și Android, intuitive și cu un design îngrijit, create pentru utilizarea zilnică de către clienții tăi." },
+        { title: "Aplicație smartphone", desc: "Aplicații pentru iPhone și Android, intuitive și cu un design îngrijit, create pentru utilizarea zilnică de către clienții tăi." },
         { title: "Ecran digital (TV)", desc: "Ecrane pentru magazine, hoteluri și restaurante care afișează oferte, meniuri și anunțuri, cu conținut actualizabil de la distanță." },
-        { title: "Soluție personalizată", desc: "Sisteme de gestiune, e-commerce și platforme interne dezvoltate la comandă, pornind de la cerințele specifice ale companiei tale." },
+        { title: "Soluție personalizată", desc: "Programe de gestiune, magazine online și instrumente interne realizate la comandă, pornind de la cerințele specifice ale companiei tale." },
       ],
     },
     portfolio: { title: "Proiectele noastre", subtitle: "Proiecte reale, pentru clienți reali", viewProject: "Vezi proiectul" },
     about: {
       title: "Despre noi",
-      p1: "Qui.SiteApp este un studio de dezvoltare web și mobile cu sediul în Olbia, Sardinia. Realizăm site-uri, aplicații și sisteme digitale pentru companii, profesioniști și afaceri locale.",
+      p1: "Qui.SiteApp este un studio de site-uri web și aplicații cu sediul în Olbia, Sardinia. Realizăm site-uri, aplicații și sisteme digitale pentru companii, profesioniști și afaceri locale.",
       p2: "Urmărim fiecare proiect de la analiza inițială până la lansare, cu o abordare clară și orientată spre rezultate. Proiectăm soluții care răspund nevoilor reale ale fiecărui client, de la micul magazin până la compania consolidată.",
       skills: "Competențe",
     },

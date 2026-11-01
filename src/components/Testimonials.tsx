@@ -5,25 +5,25 @@ import { Lang } from "@/lib/i18n";
 
 const perks: Record<Lang, { icon: typeof Rocket; title: string; desc: string }[]> = {
   it: [
-    { icon: Rocket, title: "Consegna rapida", desc: "Sito pronto in 5 giorni lavorativi" },
+    { icon: Rocket, title: "Consegna rapida", desc: "Siti semplici in 5–7 giorni lavorativi" },
     { icon: Shield, title: "Prezzi fissi", desc: "Nessuna sorpresa in fattura" },
-    { icon: Clock, title: "Risposte rapide", desc: "Riscontro entro poche ore" },
-    { icon: MessageCircle, title: "Supporto incluso", desc: "Assistenza post-consegna" },
+    { icon: Clock, title: "Risposte rapide", desc: "Ti rispondiamo entro poche ore" },
+    { icon: MessageCircle, title: "Supporto incluso", desc: "Assistenza dopo la consegna" },
   ],
   en: [
-    { icon: Rocket, title: "Fast delivery", desc: "Site ready in 5 working days" },
+    { icon: Rocket, title: "Fast delivery", desc: "Simple sites in 5–7 working days" },
     { icon: Shield, title: "Fixed prices", desc: "No surprises on the invoice" },
     { icon: Clock, title: "Fast response", desc: "Reply within a few hours" },
     { icon: MessageCircle, title: "Support included", desc: "Post-delivery assistance" },
   ],
   de: [
-    { icon: Rocket, title: "Schnelle Lieferung", desc: "Website in 5 Werktagen fertig" },
+    { icon: Rocket, title: "Schnelle Lieferung", desc: "Einfache Websites in 5–7 Werktagen" },
     { icon: Shield, title: "Festpreise", desc: "Keine Überraschungen auf der Rechnung" },
     { icon: Clock, title: "Schnelle Antwort", desc: "Rückmeldung innerhalb weniger Stunden" },
     { icon: MessageCircle, title: "Support inklusive", desc: "Unterstützung nach der Lieferung" },
   ],
   ro: [
-    { icon: Rocket, title: "Livrare rapidă", desc: "Site gata în 5 zile lucrătoare" },
+    { icon: Rocket, title: "Livrare rapidă", desc: "Site-uri simple în 5–7 zile lucrătoare" },
     { icon: Shield, title: "Prețuri fixe", desc: "Fără surprize pe factură" },
     { icon: Clock, title: "Răspuns rapid", desc: "Răspuns în câteva ore" },
     { icon: MessageCircle, title: "Suport inclus", desc: "Asistență după livrare" },

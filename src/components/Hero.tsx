@@ -35,27 +35,27 @@ const featureStyles = [
 
 const features = {
   it: [
-    { title: "Sito in 5 giorni", sub: "Tempi di consegna garantiti" },
+    { title: "Siti semplici in 5–7 giorni", sub: "Giorni lavorativi, dall'avvio del progetto" },
     { title: "Prezzi trasparenti", sub: "Costi fissi, nessuna sorpresa" },
-    { title: "Mobile & SEO inclusi", sub: "Ottimizzato per Google" },
+    { title: "Perfetto su smartphone", sub: "E ottimizzato per Google" },
     { title: "Assistenza continua", sub: "Supporto dopo la consegna" },
   ],
   en: [
-    { title: "Site in 5 days", sub: "Guaranteed delivery times" },
+    { title: "Simple sites in 5–7 days", sub: "Working days, from project start" },
     { title: "Transparent pricing", sub: "Fixed costs, no surprises" },
-    { title: "Mobile & SEO included", sub: "Optimised for Google" },
+    { title: "Great on smartphones", sub: "And optimised for Google" },
     { title: "Ongoing support", sub: "Assistance after delivery" },
   ],
   de: [
-    { title: "Website in 5 Tagen", sub: "Garantierte Lieferzeiten" },
+    { title: "Einfache Websites in 5–7 Tagen", sub: "Werktage ab Projektstart" },
     { title: "Transparente Preise", sub: "Festpreise, keine Überraschungen" },
-    { title: "Mobile & SEO inklusive", sub: "Für Google optimiert" },
+    { title: "Perfekt auf dem Smartphone", sub: "Und für Google optimiert" },
     { title: "Laufender Support", sub: "Betreuung nach der Lieferung" },
   ],
   ro: [
-    { title: "Site în 5 zile", sub: "Termene de livrare garantate" },
+    { title: "Site-uri simple în 5–7 zile", sub: "Zile lucrătoare, de la începerea proiectului" },
     { title: "Prețuri transparente", sub: "Costuri fixe, fără surprize" },
-    { title: "Mobile & SEO incluse", sub: "Optimizat pentru Google" },
+    { title: "Perfect pe smartphone", sub: "Și optimizat pentru Google" },
     { title: "Asistență continuă", sub: "Suport după livrare" },
   ],
 };
@@ -66,7 +66,7 @@ export default function Hero({ lang }: { lang: Lang }) {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900 px-6 pt-16 overflow-hidden">
+    <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900 px-6 pt-16 overflow-hidden">
       <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
 
         {/* Left — text */}

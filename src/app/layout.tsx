@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://quisiteapp.it"),
-  title: "Sviluppatore Web, Mobile & SEO a Olbia | Qui.SiteApp",
+  title: "Siti Web e App a Olbia | Qui.SiteApp",
   description:
-    "Qui.SiteApp, studio di sviluppo a Olbia, Sardegna. Realizziamo siti web, app mobile con Flutter e strategie SEO per far crescere la tua attività. Preventivo gratuito.",
+    "Qui.SiteApp, studio a Olbia, Sardegna. Realizziamo siti web, app per smartphone e lavagne elettroniche per negozi e ristoranti per far crescere la tua attività. Preventivo gratuito.",
   keywords: [
     "sviluppatore web Olbia",
     "app mobile Sardegna",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
     "Flutter developer Sardegna",
   ],
   openGraph: {
-    title: "Sviluppatore Web, Mobile & SEO a Olbia",
+    title: "Siti Web e App a Olbia",
     description:
-      "Siti web professionali, app mobile e strategie SEO a Olbia, Sardegna.",
+      "Siti web professionali, app e lavagne elettroniche per negozi e ristoranti a Olbia, Sardegna.",
     locale: "it_IT",
     type: "website",
   },

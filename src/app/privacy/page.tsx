@@ -16,12 +16,12 @@ export default function Privacy() {
 
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Dati raccolti</h2>
-          <p>Attraverso il modulo di contatto raccogliamo:</p>
+          <p>Il sito non salva i dati inseriti nel preventivo: finiscono solo nel messaggio WhatsApp che decidi di inviarci. Se ci scrivi su WhatsApp o via email trattiamo i dati che ci invii, ad esempio:</p>
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li>Nome e cognome</li>
-            <li>Indirizzo email</li>
+            <li>Numero di telefono o indirizzo email</li>
             <li>Nome dell'attività</li>
-            <li>Messaggio libero</li>
+            <li>Contenuto del messaggio</li>
           </ul>
           <p className="mt-3">I dati vengono raccolti esclusivamente per rispondere alle richieste di preventivo e non vengono ceduti a terzi.</p>
         </div>
@@ -49,7 +49,7 @@ export default function Privacy() {
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Aggiornamenti</h2>
           <p>Questa informativa può essere aggiornata. La versione vigente è sempre disponibile su questa pagina.</p>
-          <p className="text-sm text-gray-400 mt-1">Ultimo aggiornamento: maggio 2026</p>
+          <p className="text-sm text-gray-400 mt-1">Ultimo aggiornamento: novembre 2026</p>
         </div>
       </section>
 

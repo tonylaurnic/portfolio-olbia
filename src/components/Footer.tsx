@@ -36,10 +36,10 @@ export default function Footer({ lang }: { lang: Lang }) {
             <Logo size={34} />
             <p className="text-sm font-semibold text-blue-400">{t[lang].hero.slogan} {t[lang].hero.promoFrom} {t[lang].hero.promoPrice}</p>
             <p className="text-sm text-gray-500 max-w-xs text-center md:text-left">
-              {lang === "it" ? "Sviluppo web, mobile e digital signage a Olbia, Sardegna."
-                : lang === "de" ? "Web-, Mobile- und Digital-Signage-Entwicklung in Olbia, Sardinien."
-                : lang === "ro" ? "Dezvoltare web, mobile și digital signage în Olbia, Sardinia."
-                : "Web, mobile and digital signage development in Olbia, Sardinia."}
+              {lang === "it" ? "Siti web, app e lavagne elettroniche a Olbia, Sardegna."
+                : lang === "de" ? "Websites, Apps und Bildschirme für Geschäfte in Olbia, Sardinien."
+                : lang === "ro" ? "Site-uri web, aplicații și ecrane pentru localuri în Olbia, Sardinia."
+                : "Websites, apps and in-store screens in Olbia, Sardinia."}
             </p>
           </div>
 

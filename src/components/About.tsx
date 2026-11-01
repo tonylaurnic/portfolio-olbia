@@ -5,28 +5,28 @@ import Logo from "@/components/Logo";
 import { Lang, t } from "@/lib/i18n";
 
 const skills = {
-  it: ["Siti Web", "App iOS & Android", "App per TV & Schermi Digitali", "E-commerce", "Sistemi Gestionali", "Intelligenza Artificiale", "Digital Signage"],
-  en: ["Websites", "iOS & Android Apps", "TV & Digital Signage Apps", "E-commerce", "Management Systems", "Artificial Intelligence", "Digital Signage"],
-  de: ["Websites", "iOS & Android Apps", "TV & Digital Signage Apps", "E-Commerce", "Verwaltungssysteme", "Künstliche Intelligenz", "Digital Signage"],
-  ro: ["Site-uri Web", "App iOS & Android", "App TV & Digital Signage", "E-commerce", "Sisteme de Gestiune", "Inteligență Artificială", "Digital Signage"],
+  it: ["Siti Web", "App per iPhone e Android", "Lavagne elettroniche su TV", "Negozi online", "Programmi gestionali", "Intelligenza Artificiale"],
+  en: ["Websites", "iPhone & Android Apps", "Apps for TVs & In-Store Screens", "Online Shops", "Management Software", "Artificial Intelligence"],
+  de: ["Websites", "iPhone- & Android-Apps", "Apps für TV & Bildschirme", "Onlineshops", "Verwaltungsprogramme", "Künstliche Intelligenz"],
+  ro: ["Site-uri Web", "Aplicații iPhone & Android", "Aplicații TV și ecrane pentru localuri", "Magazine online", "Programe de gestiune", "Inteligență Artificială"],
 };
 
 const facts = {
   it: [
     { icon: MapPin, text: "Olbia, Sardegna" },
-    { icon: Calendar, text: "5+ anni nello sviluppo software" },
+    { icon: Calendar, text: "5+ anni di esperienza in siti e app" },
   ],
   en: [
     { icon: MapPin, text: "Olbia, Sardinia" },
-    { icon: Calendar, text: "5+ years in software development" },
+    { icon: Calendar, text: "5+ years building websites and apps" },
   ],
   de: [
     { icon: MapPin, text: "Olbia, Sardinien" },
-    { icon: Calendar, text: "5+ Jahre Softwareentwicklung" },
+    { icon: Calendar, text: "5+ Jahre Erfahrung mit Websites und Apps" },
   ],
   ro: [
     { icon: MapPin, text: "Olbia, Sardinia" },
-    { icon: Calendar, text: "5+ ani în dezvoltare software" },
+    { icon: Calendar, text: "5+ ani de experiență în site-uri și aplicații" },
   ],
 };
 
@@ -67,7 +67,7 @@ export default function About({ lang }: { lang: Lang }) {
             <div>
               <h3 className="text-white font-extrabold text-2xl">Qui.SiteApp</h3>
               <p className="text-blue-400 font-medium">
-                {lang === "it" ? "Studio di sviluppo web & mobile" : lang === "de" ? "Studio für Web- & Mobile-Entwicklung" : lang === "ro" ? "Studio de dezvoltare web & mobile" : "Web & mobile development studio"}
+                {lang === "it" ? "Studio di siti web e app" : lang === "de" ? "Studio für Websites & Apps" : lang === "ro" ? "Studio de site-uri web și aplicații" : "Website & app studio"}
               </p>
             </div>
 

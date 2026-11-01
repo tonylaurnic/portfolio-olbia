@@ -10,6 +10,7 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import HowItWorks from "@/components/HowItWorks";
+import Pricing from "@/components/Pricing";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         <Portfolio lang={lang} />
         <About lang={lang} />
         <Testimonials lang={lang} />
+        <Pricing lang={lang} />
         <Contact lang={lang} />
       </main>
       <Footer lang={lang} />

@@ -35,7 +35,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
   }, []);
 
   useEffect(() => {
-    const ids = ["services", "portfolio", "about", "contact"];
+    const ids = ["home", "services", "portfolio", "about", "pricing", "contact"];
     const observers = ids.map((id) => {
       const el = document.getElementById(id);
       if (!el) return null;
@@ -50,9 +50,11 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
   }, []);
 
   const links = [
+    { label: tr.home, href: "#home", id: "home" },
     { label: tr.services, href: "#services", id: "services" },
     { label: tr.portfolio, href: "#portfolio", id: "portfolio" },
     { label: tr.about, href: "#about", id: "about" },
+    { label: tr.pricing, href: "#pricing", id: "pricing" },
     { label: tr.contact, href: "#contact", id: "contact" },
   ];
 
@@ -73,7 +75,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className={`relative transition-colors hover:text-blue-400 ${
+                className={`relative whitespace-nowrap transition-colors hover:text-blue-400 ${
                   active === l.id
                     ? "text-blue-400"
                     : scrolled ? "text-gray-700" : "text-white/80"
@@ -125,7 +127,7 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
 
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center gap-1 bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+            className="hidden lg:inline-flex items-center gap-1 bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
           >
             {t[lang].hero.cta}
           </a>

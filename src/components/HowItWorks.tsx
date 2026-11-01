@@ -22,7 +22,7 @@ const steps = {
     {
       icon: Rocket,
       number: "03",
-      title: "Sviluppo e consegna",
+      title: "Realizzazione e consegna",
       desc: "Avviamo il progetto, ti aggiorniamo a ogni fase e consegniamo nei tempi concordati.",
       color: "bg-green-100 text-green-600",
     },

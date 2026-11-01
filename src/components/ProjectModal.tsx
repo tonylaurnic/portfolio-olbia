@@ -17,7 +17,57 @@ export type ProjectData = {
   year: string;
   real?: boolean;
   url?: string;
+  stores?: { appStore?: string; playStore?: string };
 };
+
+const storeLabels: Record<Lang, { appStore: string; playStore: string }> = {
+  it: { appStore: "Scarica su", playStore: "Disponibile su" },
+  en: { appStore: "Download on the", playStore: "Get it on" },
+  de: { appStore: "Laden im", playStore: "Jetzt bei" },
+  ro: { appStore: "Descarcă din", playStore: "Descarcă de pe" },
+};
+
+function StoreBadge({ href, label, name, children }: { href: string; label: string; name: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 h-11 pl-2.5 pr-3.5 bg-black hover:bg-gray-800 text-white border border-gray-600 rounded-lg shadow-sm transition-colors"
+    >
+      {children}
+      <span className="flex flex-col text-left">
+        <span className="text-[10px] leading-none text-gray-200 whitespace-nowrap">{label}</span>
+        <span className="text-[17px] leading-tight font-semibold whitespace-nowrap">{name}</span>
+      </span>
+    </a>
+  );
+}
+
+export function StoreLinks({ stores, lang }: { stores: NonNullable<ProjectData["stores"]>; lang: Lang }) {
+  const labels = storeLabels[lang];
+  return (
+    <div className="flex flex-wrap gap-2" onClick={(e) => e.stopPropagation()}>
+      {stores.appStore && (
+        <StoreBadge href={stores.appStore} label={labels.appStore} name="App Store">
+          <svg viewBox="0 0 24 24" className="w-7 h-7 fill-current shrink-0" aria-hidden="true">
+            <path d="M17.05 12.54c-.03-2.6 2.13-3.86 2.22-3.92-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.89-1.75.03-3.36 1.02-4.26 2.58-1.82 3.15-.46 7.82 1.3 10.38.87 1.25 1.9 2.65 3.25 2.6 1.3-.05 1.8-.84 3.37-.84 1.57 0 2.02.84 3.4.81 1.4-.02 2.29-1.27 3.15-2.53.99-1.45 1.4-2.86 1.42-2.93-.03-.01-2.71-1.04-2.74-4.16zM14.46 4.9c.72-.87 1.2-2.08 1.07-3.29-1.03.04-2.28.69-3.02 1.56-.66.76-1.24 1.99-1.09 3.17 1.15.09 2.32-.58 3.04-1.44z" />
+          </svg>
+        </StoreBadge>
+      )}
+      {stores.playStore && (
+        <StoreBadge href={stores.playStore} label={labels.playStore} name="Google Play">
+          <svg viewBox="0 0 24 24" className="w-7 h-7 shrink-0" aria-hidden="true">
+            <path fill="#00c3ff" d="M4 3.3v17.4c0 .3.1.5.2.7L13.5 12 4.2 2.6c-.1.2-.2.4-.2.7z" />
+            <path fill="#00e676" d="M4.2 2.6 13.5 12l3.2-3.2L5.7 2.5c-.6-.3-1.1-.2-1.5.1z" />
+            <path fill="#ffd600" d="m16.7 8.8-3.2 3.2 3.2 3.2 4.2-2.4c.8-.5.8-1.6 0-2z" />
+            <path fill="#ff3a44" d="M4.2 21.4c.4.3.9.4 1.5.1l11-6.3-3.2-3.2z" />
+          </svg>
+        </StoreBadge>
+      )}
+    </div>
+  );
+}
 
 interface Props {
   project: ProjectData | null;
@@ -103,7 +153,9 @@ function BrowserMockup({ url, title }: { url: string; title: string }) {
   );
 }
 
-function PhoneMockup({ image, title, url, lang }: { image?: string; title: string; url?: string; lang: Lang }) {
+function PhoneMockup({ image, title, stores }: { image?: string; title: string; stores: NonNullable<ProjectData["stores"]> }) {
+  const platforms = [stores.appStore && "iPhone", stores.playStore && "Android"].filter(Boolean).join(" · ");
+
   return (
     <div className="flex items-center justify-center flex-1 bg-gradient-to-br from-gray-900 to-gray-800 py-8">
       {/* Phone frame */}
@@ -132,28 +184,8 @@ function PhoneMockup({ image, title, url, lang }: { image?: string; title: strin
             )}
             <div className="text-center px-4">
               <p className="text-white font-bold text-base">{title}</p>
-              <p className="text-gray-400 text-xs mt-1">Android App</p>
+              <p className="text-gray-400 text-xs mt-1">{platforms}</p>
             </div>
-            {/* Fake app UI */}
-            <div className="w-full px-4 space-y-2">
-              <div className="h-2 bg-gray-700 rounded-full" />
-              <div className="h-2 bg-gray-700 rounded-full w-3/4" />
-              <div className="h-8 bg-blue-600/40 rounded-xl mt-3 flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse mr-1" />
-                <span className="text-white text-xs font-bold">REC</span>
-              </div>
-            </div>
-            {url && (
-              <a
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-1.5 bg-white text-gray-900 text-xs font-bold px-4 py-2 rounded-xl mt-2 hover:bg-gray-100 transition-colors shadow"
-              >
-                <ExternalLink size={12} />
-                {lang === "it" ? "Apri su Play Store" : "Open on Play Store"}
-              </a>
-            )}
           </div>
         </div>
         {/* Home indicator */}
@@ -173,8 +205,6 @@ export default function ProjectModal({ project, onClose, lang }: Props) {
       document.body.style.overflow = "";
     };
   }, [project, onClose]);
-
-  const isPlayStore = project?.url?.includes("play.google.com");
 
   return (
     <AnimatePresence>
@@ -207,8 +237,8 @@ export default function ProjectModal({ project, onClose, lang }: Props) {
 
             {/* Preview — takes most space */}
             <div className="flex-1 overflow-hidden flex flex-col min-h-0">
-              {isPlayStore ? (
-                <PhoneMockup image={project.image} title={project.title} url={project.url} lang={lang} />
+              {project.stores ? (
+                <PhoneMockup image={project.image} title={project.title} stores={project.stores} />
               ) : project.url ? (
                 <BrowserMockup url={project.url} title={project.title} />
               ) : project.image ? (
@@ -238,6 +268,11 @@ export default function ProjectModal({ project, onClose, lang }: Props) {
                   </div>
                   <h2 className="font-extrabold text-gray-900 text-xl leading-tight">{project.title}</h2>
                   <p className="text-gray-500 text-xs mt-1 leading-relaxed line-clamp-2">{project.desc[lang]}</p>
+                  {project.stores && (
+                    <div className="mt-2">
+                      <StoreLinks stores={project.stores} lang={lang} />
+                    </div>
+                  )}
                 </div>
                 <div className="shrink-0 text-right">
                   <p className="text-green-600 font-semibold text-xs">✓ {project.result[lang]}</p>

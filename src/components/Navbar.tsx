@@ -52,10 +52,10 @@ export default function Navbar({ lang, setLang }: NavbarProps) {
   const links = [
     { label: tr.home, href: "#home", id: "home" },
     { label: tr.services, href: "#services", id: "services" },
-    { label: tr.portfolio, href: "#portfolio", id: "portfolio" },
     { label: tr.about, href: "#about", id: "about" },
     { label: tr.pricing, href: "#pricing", id: "pricing" },
     { label: tr.contact, href: "#contact", id: "contact" },
+    { label: tr.portfolio, href: "#portfolio", id: "portfolio" },
   ];
 
   return (

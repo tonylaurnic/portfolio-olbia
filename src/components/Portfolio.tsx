@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { Lang, t } from "@/lib/i18n";
-import ProjectModal, { ProjectData } from "@/components/ProjectModal";
+import ProjectModal, { ProjectData, StoreLinks } from "@/components/ProjectModal";
 
 type Project = ProjectData;
 
@@ -27,6 +27,63 @@ const projects: Project[] = [
     url: "https://www.dentalcare-plus.de/",
   },
   {
+    title: "TrackMyTruck",
+    category: { it: "App iPhone — Food truck e mercati", en: "iPhone App — Food trucks & markets", de: "iPhone-App — Foodtrucks & Märkte", ro: "Aplicație iPhone — Food truck-uri și piețe" },
+    desc: {
+      it: "Mappa in tempo reale di food truck, ambulanti e bancarelle: i clienti vedono chi è aperto vicino a loro, con menu e offerte. I titolari gestiscono tutto da una piattaforma web collegata.",
+      en: "Real-time map of food trucks, street vendors and market stalls: customers see who is open nearby, with menus and offers. Owners manage everything from a connected web platform.",
+      de: "Echtzeitkarte von Foodtrucks, Straßenhändlern und Marktständen: Kunden sehen, wer in der Nähe geöffnet hat, mit Menüs und Angeboten. Inhaber verwalten alles über eine verbundene Web-Plattform.",
+      ro: "Hartă în timp real cu food truck-uri, vânzători ambulanți și tarabe: clienții văd cine este deschis în apropiere, cu meniuri și oferte. Proprietarii gestionează totul dintr-o platformă web conectată.",
+    },
+    result: { it: "App disponibile su App Store", en: "App available on the App Store", de: "App im App Store verfügbar", ro: "Aplicație disponibilă pe App Store" },
+    tags: ["App iPhone", "Mappa in tempo reale", "Piattaforma web"],
+    color: "from-orange-100 to-amber-50",
+    image: "/app-trackmytruck.jpg",
+    year: "2026",
+    real: true,
+    stores: { appStore: "https://apps.apple.com/app/id6823933620" },
+  },
+  {
+    title: "vitaFit",
+    category: { it: "App iPhone e Android — Salute", en: "iPhone & Android App — Health", de: "iPhone- & Android-App — Gesundheit", ro: "Aplicație iPhone și Android — Sănătate" },
+    desc: {
+      it: "Digiuno intermittente e controllo del peso in un'unica app: timer, storico dei progressi e menu personalizzati creati con l'intelligenza artificiale.",
+      en: "Intermittent fasting and weight tracking in one app: timer, progress history and personalised menus created with artificial intelligence.",
+      de: "Intervallfasten und Gewichtskontrolle in einer App: Timer, Fortschrittsverlauf und personalisierte Menüs, erstellt mit künstlicher Intelligenz.",
+      ro: "Post intermitent și controlul greutății într-o singură aplicație: cronometru, istoric al progresului și meniuri personalizate create cu inteligență artificială.",
+    },
+    result: { it: "App disponibile su App Store e Google Play", en: "App available on the App Store and Google Play", de: "App im App Store und bei Google Play verfügbar", ro: "Aplicație disponibilă pe App Store și Google Play" },
+    tags: ["App iPhone", "App Android", "Intelligenza Artificiale"],
+    color: "from-emerald-100 to-green-50",
+    image: "/app-vitafit.jpg",
+    year: "2026",
+    real: true,
+    stores: {
+      appStore: "https://apps.apple.com/app/id6812498963",
+      playStore: "https://play.google.com/store/apps/details?id=com.antoniustratulat.vitafit",
+    },
+  },
+  {
+    title: "Chef Planner",
+    category: { it: "App iPhone e Android — Cucina", en: "iPhone & Android App — Cooking", de: "iPhone- & Android-App — Kochen", ro: "Aplicație iPhone și Android — Gătit" },
+    desc: {
+      it: "Trasforma qualsiasi ricetta in una scheda ordinata e pronta da cucinare: da una foto, da un sito, da YouTube o dai social, con ingredienti e passaggi estratti dall'intelligenza artificiale.",
+      en: "Turns any recipe into a tidy card ready to cook: from a photo, a website, YouTube or social media, with ingredients and steps extracted by artificial intelligence.",
+      de: "Macht aus jedem Rezept eine übersichtliche Karte zum Nachkochen: aus einem Foto, einer Website, YouTube oder sozialen Netzwerken, mit Zutaten und Schritten, die künstliche Intelligenz erkennt.",
+      ro: "Transformă orice rețetă într-o fișă ordonată, gata de gătit: dintr-o fotografie, un site, YouTube sau rețele sociale, cu ingrediente și pași extrași de inteligența artificială.",
+    },
+    result: { it: "App disponibile su App Store e Google Play", en: "App available on the App Store and Google Play", de: "App im App Store und bei Google Play verfügbar", ro: "Aplicație disponibilă pe App Store și Google Play" },
+    tags: ["App iPhone", "App Android", "Ricette", "Intelligenza Artificiale"],
+    color: "from-rose-100 to-orange-50",
+    image: "/app-chefplanner.jpg",
+    year: "2026",
+    real: true,
+    stores: {
+      appStore: "https://apps.apple.com/app/id6811906553",
+      playStore: "https://play.google.com/store/apps/details?id=com.antoniustratulat.chef_planner_app",
+    },
+  },
+  {
     title: "AndroDashCam",
     category: { it: "App Android — Play Store", en: "Android App — Play Store", de: "Android-App — Play Store", ro: "App Android — Play Store" },
     desc: {
@@ -41,7 +98,7 @@ const projects: Project[] = [
     image: "/androdashcam.png",
     year: "2024",
     real: true,
-    url: "https://play.google.com/store/apps/details?id=com.stratulat.androdashcam.app",
+    stores: { playStore: "https://play.google.com/store/apps/details?id=com.stratulat.androdashcam.app" },
   },
   {
     title: "DySign",
@@ -66,7 +123,7 @@ export default function Portfolio({ lang }: { lang: Lang }) {
   const [selected, setSelected] = useState<Project | null>(null);
 
   return (
-    <section id="portfolio" className="py-24 px-6 bg-gray-50">
+    <section id="portfolio" className="py-24 px-6 bg-gray-50 border-t border-gray-200">
       <ProjectModal project={selected} onClose={() => setSelected(null)} lang={lang} />
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
@@ -127,6 +184,11 @@ export default function Portfolio({ lang }: { lang: Lang }) {
                     </span>
                   ))}
                 </div>
+                {p.stores && (
+                  <div className="mb-3">
+                    <StoreLinks stores={p.stores} lang={lang} />
+                  </div>
+                )}
                 <div className="flex items-center gap-3">
                   <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600">
                     <ExternalLink size={14} />

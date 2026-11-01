@@ -23,11 +23,11 @@ export default function Home() {
         <Hero lang={lang} />
         <Services lang={lang} />
         <HowItWorks lang={lang} />
-        <Portfolio lang={lang} />
         <About lang={lang} />
         <Testimonials lang={lang} />
         <Pricing lang={lang} />
         <Contact lang={lang} />
+        <Portfolio lang={lang} />
       </main>
       <Footer lang={lang} />
       <WhatsAppFloat lang={lang} />

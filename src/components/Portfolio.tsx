@@ -84,7 +84,7 @@ const projects: Project[] = [
     },
   },
   {
-    title: "AndroDashCam",
+    title: "AndroDash",
     category: { it: "App Android — Play Store", en: "Android App — Play Store", de: "Android-App — Play Store", ro: "App Android — Play Store" },
     desc: {
       it: "App dashcam per Android pubblicata sul Google Play Store. Registrazione automatica continua, rilevamento urti e salvataggio dei video mentre usi altre app.",

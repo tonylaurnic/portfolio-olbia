@@ -4,12 +4,6 @@ import { Globe, Smartphone, Tv, Code2 } from "lucide-react";
 import { Lang, t } from "@/lib/i18n";
 
 const icons = [Globe, Smartphone, Tv, Code2];
-const colors = [
-  "bg-blue-100 text-blue-600",
-  "bg-purple-100 text-purple-600",
-  "bg-violet-100 text-violet-600",
-  "bg-orange-100 text-orange-600",
-];
 
 export default function Services({ lang }: { lang: Lang }) {
   const tr = t[lang].services;
@@ -32,9 +26,9 @@ export default function Services({ lang }: { lang: Lang }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.1 }}
-                className="bg-gray-50 rounded-2xl p-6 hover:shadow-md transition-shadow border border-gray-100"
+                className="bg-white rounded-2xl p-6 border border-gray-200/80 hover:border-blue-200 hover:shadow-[0_12px_32px_-12px_rgba(0,114,255,0.25)] hover:-translate-y-0.5 transition-all"
               >
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${colors[i]}`}>
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-gradient-to-br from-cyan-50 to-blue-100 text-blue-600 ring-1 ring-blue-100">
                   <Icon size={22} />
                 </div>
                 <h3 className="font-bold text-lg text-gray-900 mb-2">{item.title}</h3>

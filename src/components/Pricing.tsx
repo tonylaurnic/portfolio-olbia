@@ -682,7 +682,7 @@ function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg
     }
   };
 
-  const fieldClass = "w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-400 bg-white";
+  const fieldClass = "w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-400 bg-white text-gray-900 placeholder:text-gray-400";
 
   return (
     <div id="preventivo" className="max-w-4xl mx-auto bg-white border-2 border-blue-600 rounded-2xl p-6 md:p-8 mb-6 scroll-mt-24">

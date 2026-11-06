@@ -93,7 +93,7 @@ export default function Contact({ lang }: { lang: Lang }) {
     }
   };
 
-  const field = "w-full px-4 py-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition";
+  const field = "w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100 transition";
 
   return (
     <section id="contact" className="py-24 px-6 bg-gray-50">

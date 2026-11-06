@@ -47,8 +47,6 @@ type Content = {
     again: string;
     error: string;
     subject: string;
-    phone: string;
-    waPhone: string;
     waIntro: string;
     waPackage: string;
     delivery: string;
@@ -160,8 +158,6 @@ const content: Record<Lang, Content> = {
       again: "Fai un altro preventivo",
       error: "Invio non riuscito. Riprova tra poco oppure scrivici a",
       subject: "Richiesta di preventivo dal sito",
-      phone: "Telefono (opzionale)",
-      waPhone: "Telefono",
       waIntro: "Buongiorno, ho compilato il preventivo sul sito e vorrei ricevere quello ufficiale.",
       waPackage: "Pacchetto",
       delivery: "Consegna stimata",
@@ -278,8 +274,6 @@ const content: Record<Lang, Content> = {
       again: "Make another estimate",
       error: "Sending failed. Please try again shortly or write to",
       subject: "Quote request from the website",
-      phone: "Phone (optional)",
-      waPhone: "Phone",
       waIntro: "Hello, I used the calculator on your website and would like a quote.",
       waPackage: "Package",
       delivery: "Estimated delivery",
@@ -396,8 +390,6 @@ const content: Record<Lang, Content> = {
       again: "Neue Schätzung erstellen",
       error: "Senden fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal oder schreiben Sie an",
       subject: "Angebotsanfrage über die Website",
-      phone: "Telefon (optional)",
-      waPhone: "Telefon",
       waIntro: "Guten Tag, ich habe den Rechner auf Ihrer Website genutzt und möchte ein Angebot.",
       waPackage: "Paket",
       delivery: "Geschätzte Lieferzeit",
@@ -514,8 +506,6 @@ const content: Record<Lang, Content> = {
       again: "Fă o nouă estimare",
       error: "Trimiterea nu a reușit. Încearcă din nou în curând sau scrie-ne la",
       subject: "Cerere de ofertă de pe site",
-      phone: "Telefon (opțional)",
-      waPhone: "Telefon",
       waIntro: "Bună ziua, am folosit calculatorul de pe site și aș dori o ofertă.",
       waPackage: "Pachet",
       delivery: "Livrare estimată",
@@ -611,7 +601,7 @@ type SendStatus = "idle" | "sending" | "sent" | "error";
 function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg: number; setPkg: (i: number) => void }) {
   const [quantities, setQuantities] = useState<number[]>(CALC.addons.map(() => 0));
   const [care, setCare] = useState<number | null>(null);
-  const [details, setDetails] = useState({ name: "", business: "", email: "", phone: "", notes: "" });
+  const [details, setDetails] = useState({ name: "", business: "", email: "", notes: "" });
   const [status, setStatus] = useState<SendStatus>("idle");
   const [botcheck, setBotcheck] = useState("");
   const setDetail = (key: keyof typeof details, value: string) =>
@@ -653,7 +643,6 @@ function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg
     `${c.calc.waName}: ${details.name.trim()}`,
     `${c.calc.waBusiness}: ${details.business.trim()}`,
     `${c.calc.waEmail}: ${details.email.trim()}`,
-    ...(details.phone.trim() ? [`${c.calc.waPhone}: ${details.phone.trim()}`] : []),
     `${c.calc.waPackage}: ${packages[pkg].name}`,
     ...(chosen.length
       ? [`${c.addonsTitle}: ${chosen.map(addonLabel).join(", ")}`]
@@ -825,13 +814,9 @@ function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg
               <label htmlFor="calc-business" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.business}</label>
               <input id="calc-business" type="text" required pattern=".*\S.*" autoComplete="organization" value={details.business} onChange={(e) => setDetail("business", e.target.value)} className={fieldClass} />
             </div>
-            <div>
+            <div className="sm:col-span-2">
               <label htmlFor="calc-email" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.email}</label>
               <input id="calc-email" type="email" required maxLength={200} autoComplete="email" value={details.email} onChange={(e) => setDetail("email", e.target.value)} className={fieldClass} />
-            </div>
-            <div>
-              <label htmlFor="calc-phone" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.phone}</label>
-              <input id="calc-phone" type="tel" maxLength={30} autoComplete="tel" value={details.phone} onChange={(e) => setDetail("phone", e.target.value)} className={fieldClass} />
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="calc-notes" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.notes}</label>

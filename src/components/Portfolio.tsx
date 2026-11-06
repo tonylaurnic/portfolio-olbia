@@ -10,6 +10,22 @@ type Project = ProjectData;
 
 const projects: Project[] = [
   {
+    title: "Terrazza Maestrale",
+    category: { it: "Demo — Sito per ristoranti", en: "Demo — Restaurant website", de: "Demo — Website für Restaurants", ro: "Demo — Site pentru restaurante" },
+    desc: {
+      it: "Simulazione di un sito per un ristorante di fantasia a Olbia: menu sfogliabile, galleria di foto, prenotazione del tavolo e versione in inglese per i turisti. Provalo come farebbero i tuoi clienti.",
+      en: "Simulated website for a fictional restaurant in Olbia: browsable menu, photo gallery, table booking and an English version for tourists. Try it as your customers would.",
+      de: "Simulierte Website für ein fiktives Restaurant in Olbia: Speisekarte, Fotogalerie, Tischreservierung und englische Version für Touristen. Probieren Sie sie aus wie Ihre Gäste.",
+      ro: "Simulare de site pentru un restaurant fictiv din Olbia: meniu, galerie foto, rezervare de masă și versiune în engleză pentru turiști. Încearcă-l așa cum l-ar folosi clienții tăi.",
+    },
+    result: { it: "Demo interattiva: provala", en: "Interactive demo: try it", de: "Interaktive Demo: ausprobieren", ro: "Demo interactiv: încearcă-l" },
+    tags: ["Sito Web", "Menu", "Prenotazioni", "Italiano e inglese"],
+    color: "from-amber-100 to-orange-50",
+    image: "/demo-ristorante/anteprima.jpg",
+    year: "2026",
+    url: "/demo/ristorante",
+  },
+  {
     title: "DentalCare Plus",
     category: { it: "Sito Web — Germania", en: "Website — Germany", de: "Website — Deutschland", ro: "Site Web — Germania" },
     desc: {

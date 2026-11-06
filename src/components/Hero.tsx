@@ -1,5 +1,5 @@
 "use client";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight, MapPin, Star, Briefcase, Users, Zap, Wallet, Smartphone, Wrench } from "lucide-react";
 import { Lang, t } from "@/lib/i18n";
 
@@ -26,12 +26,7 @@ const stats = {
   ],
 };
 
-const featureStyles = [
-  { icon: Zap, color: "from-yellow-400/20 to-orange-400/10 border-yellow-400/20" },
-  { icon: Wallet, color: "from-green-400/20 to-emerald-400/10 border-green-400/20" },
-  { icon: Smartphone, color: "from-blue-400/20 to-indigo-400/10 border-blue-400/20" },
-  { icon: Wrench, color: "from-purple-400/20 to-pink-400/10 border-purple-400/20" },
-];
+const featureIcons = [Zap, Wallet, Smartphone, Wrench];
 
 const features = {
   it: [
@@ -63,11 +58,16 @@ const features = {
 export default function Hero({ lang }: { lang: Lang }) {
   const tr = t[lang].hero;
   const s = stats[lang];
-  const reduceMotion = useReducedMotion();
 
   return (
-    <section id="home" className="min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-900 px-6 pt-16 overflow-hidden">
-      <div className="max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
+    <section id="home" className="relative min-h-screen flex items-center bg-[#070d1f] px-6 pt-16 overflow-hidden">
+      {/* Brand glows + faint grid */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-40 right-[-10%] w-[640px] h-[640px] rounded-full bg-blue-600/25 blur-[120px]" />
+        <div className="absolute bottom-[-20%] left-[-10%] w-[520px] h-[520px] rounded-full bg-cyan-500/10 blur-[120px]" />
+        <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(rgba(255,255,255,.6)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.6)_1px,transparent_1px)] [background-size:64px_64px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+      </div>
+      <div className="relative max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-16">
 
         {/* Left — text */}
         <div>
@@ -75,9 +75,9 @@ export default function Hero({ lang }: { lang: Lang }) {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-green-500/20 text-green-400 text-sm font-medium px-3 py-1 rounded-full mb-6 border border-green-500/30"
+            className="inline-flex items-center gap-2 bg-white/[0.04] text-slate-300 text-sm font-medium px-3.5 py-1.5 rounded-full mb-8 border border-white/10"
           >
-            <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+            <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
             {tr.badge}
           </motion.span>
 
@@ -85,66 +85,48 @@ export default function Hero({ lang }: { lang: Lang }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-4"
+            className="mb-6"
           >
-            <span className="text-slate-400 text-2xl md:text-3xl font-medium block mb-2">
+            <span className="flex items-center gap-3 text-cyan-300/90 text-xs md:text-sm font-semibold uppercase tracking-[0.25em] mb-4">
+              <span className="h-px w-8 bg-cyan-300/60" />
               {lang === "it" ? "Studio digitale a Olbia" : lang === "de" ? "Digitalstudio in Olbia" : lang === "ro" ? "Studio digital în Olbia" : "Digital studio in Olbia"}
             </span>
-            <span className="text-white">Qui.SiteApp</span>
+            <span className="block text-5xl md:text-7xl font-bold leading-[1.05] tracking-tight">
+              <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">Qui.Site</span>
+              <span className="text-white">App</span>
+            </span>
           </motion.h1>
 
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex items-center gap-1 text-blue-400 font-medium mb-5"
+            className="flex items-center gap-1.5 text-slate-400 text-sm font-medium mb-8"
           >
-            <MapPin size={16} />
+            <MapPin size={15} className="text-cyan-400" />
             <span>{tr.location}</span>
           </motion.div>
 
-          {/* Promo banner */}
+          {/* Promo: refined price card in brand colours */}
           <motion.a
             href="#contact"
-            initial={{ opacity: 0, scale: 0.6, rotate: -4 }}
-            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-            transition={{ type: "spring", stiffness: 260, damping: 14, delay: 0.3 }}
-            className="relative block w-fit mb-6 mt-2"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="group relative flex w-fit items-center gap-5 mb-8 rounded-2xl border border-cyan-400/20 bg-gradient-to-br from-white/[0.07] to-white/[0.02] px-5 py-4 backdrop-blur-sm hover:border-cyan-300/50 transition-colors"
           >
-            <motion.div
-              animate={reduceMotion ? undefined : { scale: [1, 1.04, 1] }}
-              transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-500 via-red-500 to-pink-600 px-6 py-4 shadow-2xl shadow-red-900/50"
-            >
-              {/* Shine sweep */}
-              {!reduceMotion && (
-                <motion.span
-                  aria-hidden
-                  initial={{ x: "-150%" }}
-                  animate={{ x: "250%" }}
-                  transition={{ duration: 1.4, repeat: Infinity, repeatDelay: 1.6, ease: "easeInOut" }}
-                  className="absolute inset-y-0 w-1/3 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                />
-              )}
-              <p className="relative text-2xl md:text-3xl font-black text-white uppercase tracking-tight leading-none">
-                {tr.slogan}
+            <div>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">{tr.promoTag}</p>
+              <p className="mt-1 text-lg md:text-xl font-semibold text-white">{tr.slogan}</p>
+            </div>
+            <span className="h-12 w-px bg-white/15" />
+            <div>
+              <p className="text-xs text-slate-400">{tr.promoFrom}</p>
+              <p className="text-4xl md:text-5xl font-bold leading-none tracking-tight bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                {tr.promoPrice}
               </p>
-              <p className="relative mt-2 flex items-baseline gap-2 text-white">
-                <span className="text-base md:text-lg font-semibold text-white/90">{tr.promoFrom}</span>
-                <span className="text-5xl md:text-6xl font-black leading-none text-yellow-300 drop-shadow-[0_2px_0_rgba(0,0,0,0.25)]">
-                  {tr.promoPrice}
-                </span>
-              </p>
-            </motion.div>
-
-            {/* Tag */}
-            <motion.span
-              animate={reduceMotion ? undefined : { rotate: [12, 6, 12] }}
-              transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -top-3 -right-4 rotate-12 bg-yellow-300 text-red-700 text-xs font-black uppercase px-3 py-1 rounded-full shadow-lg"
-            >
-              {tr.promoTag}
-            </motion.span>
+            </div>
+            <ArrowRight size={18} className="text-cyan-300/70 group-hover:translate-x-1 transition-transform" />
           </motion.a>
 
           <motion.p
@@ -164,14 +146,14 @@ export default function Hero({ lang }: { lang: Lang }) {
           >
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 bg-blue-500 hover:bg-blue-400 text-white font-semibold px-8 py-4 rounded-xl transition-colors text-lg shadow-lg shadow-blue-900"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors shadow-[0_10px_30px_-10px_rgba(0,114,255,0.7)]"
             >
               {tr.cta}
-              <ArrowRight size={20} />
+              <ArrowRight size={18} />
             </a>
             <a
               href="#portfolio"
-              className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl border border-white/20 transition-colors text-lg"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap bg-white/[0.04] hover:bg-white/10 text-white font-semibold px-7 py-3.5 rounded-xl border border-white/15 transition-colors"
             >
               {tr.ctaSecondary}
             </a>
@@ -188,8 +170,8 @@ export default function Hero({ lang }: { lang: Lang }) {
               const Icon = st.icon;
               return (
                 <div key={i} className="flex items-center gap-2">
-                  <div className="w-9 h-9 rounded-lg bg-blue-500/20 flex items-center justify-center">
-                    <Icon size={16} className="text-blue-400" />
+                  <div className="w-9 h-9 rounded-lg bg-white/[0.04] border border-white/10 flex items-center justify-center">
+                    <Icon size={16} className="text-cyan-300" />
                   </div>
                   <div>
                     <p className="text-white font-bold leading-none">{st.value}</p>
@@ -209,10 +191,10 @@ export default function Hero({ lang }: { lang: Lang }) {
           className="relative flex justify-center items-center"
         >
           {/* Glow */}
-          <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full" />
+          <div className="absolute inset-0 bg-blue-500/15 blur-3xl rounded-full" />
 
           {/* Main card */}
-          <div className="relative w-80 bg-white/5 border border-white/10 backdrop-blur-sm rounded-3xl p-6 shadow-2xl flex flex-col gap-4">
+          <div className="relative w-80 bg-gradient-to-b from-white/[0.08] to-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] flex flex-col gap-3">
 
             {/* Header */}
             <div className="flex items-center justify-between mb-2">
@@ -225,16 +207,18 @@ export default function Hero({ lang }: { lang: Lang }) {
 
             {/* Feature rows */}
             {features[lang].map((item, i) => {
-              const Icon = featureStyles[i].icon;
+              const Icon = featureIcons[i];
               return (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.5 + i * 0.12 }}
-                  className={`flex items-center gap-3 bg-gradient-to-r ${featureStyles[i].color} border rounded-2xl px-4 py-3`}
+                  className="flex items-center gap-3 bg-white/[0.03] border border-white/[0.08] rounded-2xl px-4 py-3"
                 >
-                  <Icon size={22} className="text-white/80 shrink-0" />
+                  <span className="w-9 h-9 shrink-0 rounded-xl bg-gradient-to-br from-cyan-400/20 to-blue-500/20 border border-cyan-300/20 flex items-center justify-center">
+                    <Icon size={17} className="text-cyan-300" />
+                  </span>
                   <div>
                     <p className="text-white font-bold text-sm leading-tight">{item.title}</p>
                     <p className="text-white/50 text-xs mt-0.5">{item.sub}</p>
@@ -249,7 +233,7 @@ export default function Hero({ lang }: { lang: Lang }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.1 }}
-              className="mt-1 w-full text-center bg-blue-500 hover:bg-blue-400 text-white font-bold py-3 rounded-2xl text-sm transition-colors"
+              className="mt-2 w-full text-center bg-white text-[#070d1f] hover:bg-cyan-50 font-semibold py-3 rounded-2xl text-sm transition-colors"
             >
               {lang === "it" ? "Preventivo gratuito →" : lang === "de" ? "Kostenloses Angebot →" : lang === "ro" ? "Ofertă gratuită →" : "Free quote →"}
             </motion.a>

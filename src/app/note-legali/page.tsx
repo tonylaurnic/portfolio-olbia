@@ -19,7 +19,7 @@ export default function NoteLegali() {
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Contatti</h2>
           <p>Email: <a href="mailto:info@quisiteapp.it" className="text-blue-600 hover:underline">info@quisiteapp.it</a></p>
-          <p>WhatsApp: <a href="https://wa.me/393883879487" className="text-blue-600 hover:underline">+39 388 387 9487</a></p>
+          <p>Telefono: <a href="tel:+393883879487" className="text-blue-600 hover:underline">+39 388 387 9487</a></p>
         </div>
 
         <div>

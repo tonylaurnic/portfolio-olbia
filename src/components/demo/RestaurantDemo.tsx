@@ -8,7 +8,6 @@ import { MapPin, Clock, Phone, Star, CalendarCheck, Menu as MenuIcon, X, Sparkle
 
 const serif = Playfair_Display({ subsets: ["latin"], weight: ["500", "700"], style: ["normal", "italic"] });
 
-const WHATSAPP_NUMBER = "393883879487";
 const IMG = "/demo-ristorante";
 
 type L = "it" | "en";
@@ -79,7 +78,7 @@ const tx = {
     name: "Nome", phone: "Telefono", date: "Data", time: "Ora", people: "Persone",
     send: "Invia la prenotazione",
     sentTitle: "Prenotazione ricevuta!",
-    sentText: "Questa è una simulazione: nel sito vero la richiesta arriva subito al ristorante su WhatsApp o via email.",
+    sentText: "Questa è una simulazione: nel sito vero la richiesta arriva subito al ristorante via email.",
     again: "Nuova prenotazione",
     whereTitle: "Dove siamo",
     address: "Lungomare di esempio, Olbia",
@@ -88,7 +87,6 @@ const tx = {
     phoneDemo: "Telefono di esempio",
     footer: "Terrazza Maestrale è un ristorante di fantasia: questa pagina mostra cosa può avere il sito del tuo locale.",
     madeBy: "Sito realizzato da",
-    waText: "Ciao! Ho visto la demo del ristorante su quisiteapp.it e vorrei un sito così per il mio locale.",
   },
   en: {
     demo: "This is a sample website made by Qui.SiteApp. The restaurant is fictional.",
@@ -109,7 +107,7 @@ const tx = {
     name: "Name", phone: "Phone", date: "Date", time: "Time", people: "Guests",
     send: "Send booking",
     sentTitle: "Booking received!",
-    sentText: "This is a simulation: on a real website the request goes straight to the restaurant via WhatsApp or email.",
+    sentText: "This is a simulation: on a real website the request goes straight to the restaurant by email.",
     again: "New booking",
     whereTitle: "Find us",
     address: "Sample seafront, Olbia",
@@ -118,7 +116,6 @@ const tx = {
     phoneDemo: "Sample phone",
     footer: "Terrazza Maestrale is a fictional restaurant: this page shows what your venue's website could include.",
     madeBy: "Website by",
-    waText: "Hi! I saw the restaurant demo on quisiteapp.it and I'd like a website like this for my business.",
   },
 } as const;
 
@@ -132,7 +129,7 @@ export default function RestaurantDemo() {
   const [sent, setSent] = useState(false);
   const s = tx[lang];
   const today = new Date().toISOString().slice(0, 10);
-  const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(s.waText)}`;
+  const ctaUrl = "/#contact";
   const current = menu.find((m) => m.key === tab) ?? menu[0];
 
   return (
@@ -144,7 +141,7 @@ export default function RestaurantDemo() {
             <Sparkles size={15} className="text-cyan-400 shrink-0" />
             {s.demo}
           </p>
-          <a href={waUrl} target="_blank" rel="noopener noreferrer"
+          <a href={ctaUrl} target="_blank"
             className="shrink-0 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 font-semibold px-4 py-1.5 rounded-full transition-colors">
             {s.demoCta} · da €100
           </a>
@@ -304,7 +301,7 @@ export default function RestaurantDemo() {
           {s.madeBy}{" "}
           <Link href="/" target="_blank" className="font-semibold text-cyan-300 hover:underline">Qui.SiteApp</Link>
           {" · "}
-          <a href={waUrl} target="_blank" rel="noopener noreferrer" className="font-semibold text-cyan-300 hover:underline">{s.demoCta}</a>
+          <a href={ctaUrl} target="_blank" className="font-semibold text-cyan-300 hover:underline">{s.demoCta}</a>
         </p>
       </footer>
     </div>

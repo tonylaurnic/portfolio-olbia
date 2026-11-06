@@ -11,7 +11,6 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import HowItWorks from "@/components/HowItWorks";
 import Pricing from "@/components/Pricing";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("it");
@@ -30,7 +29,6 @@ export default function Home() {
         <Portfolio lang={lang} />
       </main>
       <Footer lang={lang} />
-      <WhatsAppFloat lang={lang} />
     </>
   );
 }

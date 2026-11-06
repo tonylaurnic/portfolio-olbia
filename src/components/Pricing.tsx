@@ -1,10 +1,9 @@
 "use client";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { motion } from "framer-motion";
-import { Check, ChevronDown, MessageCircle } from "lucide-react";
+import { Check, ChevronDown, ArrowDown, Send, Loader2, CheckCircle2 } from "lucide-react";
 import { Lang } from "@/lib/i18n";
-
-const WHATSAPP_NUMBER = "393883879487";
+import { sendEmail, CONTACT_EMAIL } from "@/lib/sendEmail";
 
 type Package = { tag: string; name: string; price: string; desc: string; features: string[] };
 
@@ -14,7 +13,6 @@ type Content = {
   from: string;
   popular: string;
   cta: string;
-  waIntro: string;
   fixedPrice: string;
   base: { tag: string; name: string; price: string; desc: string; features: string[]; excluded: string };
   packages: Package[];
@@ -43,6 +41,14 @@ type Content = {
     care: string;
     disclaimer: string;
     send: string;
+    sending: string;
+    sentTitle: string;
+    sentText: string;
+    again: string;
+    error: string;
+    subject: string;
+    phone: string;
+    waPhone: string;
     waIntro: string;
     waPackage: string;
     delivery: string;
@@ -70,7 +76,6 @@ const content: Record<Lang, Content> = {
     from: "da",
     popular: "Più richiesto",
     cta: "Chiedi informazioni",
-    waIntro: "Buongiorno, vorrei informazioni sul pacchetto:",
     fixedPrice: "prezzo fisso",
     base: {
       tag: "Per iniziare",
@@ -148,7 +153,15 @@ const content: Record<Lang, Content> = {
       estimate: "La tua stima",
       care: "per l'assistenza",
       disclaimer: "Stima indicativa: il prezzo finale viene fissato nel preventivo ufficiale. Dominio e spazio online esclusi.",
-      send: "Invia la stima su WhatsApp",
+      send: "Invia la richiesta di preventivo",
+      sending: "Invio in corso…",
+      sentTitle: "Richiesta inviata!",
+      sentText: "Grazie, ti mandiamo il preventivo ufficiale entro 24 ore all'email che hai indicato.",
+      again: "Fai un altro preventivo",
+      error: "Invio non riuscito. Riprova tra poco oppure scrivici a",
+      subject: "Richiesta di preventivo dal sito",
+      phone: "Telefono (opzionale)",
+      waPhone: "Telefono",
       waIntro: "Buongiorno, ho compilato il preventivo sul sito e vorrei ricevere quello ufficiale.",
       waPackage: "Pacchetto",
       delivery: "Consegna stimata",
@@ -157,10 +170,10 @@ const content: Record<Lang, Content> = {
       step4: "4. I tuoi dati",
       name: "Il tuo nome *",
       business: "Nome dell'attività *",
-      email: "Email (opzionale)",
+      email: "La tua email *",
       notes: "Note aggiuntive (opzionale)",
       notesPlaceholder: "Descrivi brevemente il tuo progetto...",
-      dataNote: "I dati non vengono salvati sul sito: finiscono solo nel messaggio WhatsApp che invii.",
+      dataNote: "I dati vengono inviati via email a Qui.SiteApp solo per risponderti, come descritto nella Privacy.",
       waName: "Nome",
       waBusiness: "Attività",
       waEmail: "Email",
@@ -181,7 +194,6 @@ const content: Record<Lang, Content> = {
     from: "from",
     popular: "Most popular",
     cta: "Ask for details",
-    waIntro: "Hello, I would like information about the package:",
     fixedPrice: "fixed price",
     base: {
       tag: "To get started",
@@ -259,7 +271,15 @@ const content: Record<Lang, Content> = {
       estimate: "Your estimate",
       care: "for support",
       disclaimer: "Indicative estimate: the final price is fixed in the quote. Domain and web hosting not included.",
-      send: "Send the estimate on WhatsApp",
+      send: "Send quote request",
+      sending: "Sending…",
+      sentTitle: "Request sent!",
+      sentText: "Thank you, we'll send you the official quote within 24 hours to the email you provided.",
+      again: "Make another estimate",
+      error: "Sending failed. Please try again shortly or write to",
+      subject: "Quote request from the website",
+      phone: "Phone (optional)",
+      waPhone: "Phone",
       waIntro: "Hello, I used the calculator on your website and would like a quote.",
       waPackage: "Package",
       delivery: "Estimated delivery",
@@ -268,10 +288,10 @@ const content: Record<Lang, Content> = {
       step4: "4. Your details",
       name: "Your name *",
       business: "Business name *",
-      email: "Email (optional)",
+      email: "Your email *",
       notes: "Additional notes (optional)",
       notesPlaceholder: "Briefly describe your project...",
-      dataNote: "Your details are not stored on the site: they only go into the WhatsApp message you send.",
+      dataNote: "Your details are emailed to Qui.SiteApp only to reply to you, as described in the Privacy Policy.",
       waName: "Name",
       waBusiness: "Business",
       waEmail: "Email",
@@ -292,7 +312,6 @@ const content: Record<Lang, Content> = {
     from: "ab",
     popular: "Am beliebtesten",
     cta: "Informationen anfragen",
-    waIntro: "Guten Tag, ich hätte gerne Informationen zum Paket:",
     fixedPrice: "Festpreis",
     base: {
       tag: "Zum Einstieg",
@@ -370,7 +389,15 @@ const content: Record<Lang, Content> = {
       estimate: "Ihre Schätzung",
       care: "für den Support",
       disclaimer: "Unverbindliche Schätzung: Der Endpreis wird im Angebot festgelegt. Domain und Webhosting nicht enthalten.",
-      send: "Schätzung per WhatsApp senden",
+      send: "Angebotsanfrage senden",
+      sending: "Wird gesendet…",
+      sentTitle: "Anfrage gesendet!",
+      sentText: "Vielen Dank, wir senden Ihnen das offizielle Angebot innerhalb von 24 Stunden an die angegebene E-Mail.",
+      again: "Neue Schätzung erstellen",
+      error: "Senden fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal oder schreiben Sie an",
+      subject: "Angebotsanfrage über die Website",
+      phone: "Telefon (optional)",
+      waPhone: "Telefon",
       waIntro: "Guten Tag, ich habe den Rechner auf Ihrer Website genutzt und möchte ein Angebot.",
       waPackage: "Paket",
       delivery: "Geschätzte Lieferzeit",
@@ -379,10 +406,10 @@ const content: Record<Lang, Content> = {
       step4: "4. Ihre Daten",
       name: "Ihr Name *",
       business: "Unternehmensname *",
-      email: "E-Mail (optional)",
+      email: "Ihre E-Mail *",
       notes: "Zusätzliche Notizen (optional)",
       notesPlaceholder: "Beschreiben Sie Ihr Projekt kurz...",
-      dataNote: "Ihre Daten werden nicht auf der Website gespeichert: Sie gelangen nur in die WhatsApp-Nachricht, die Sie senden.",
+      dataNote: "Ihre Daten werden nur zur Beantwortung per E-Mail an Qui.SiteApp gesendet, wie in der Datenschutzerklärung beschrieben.",
       waName: "Name",
       waBusiness: "Unternehmen",
       waEmail: "E-Mail",
@@ -403,7 +430,6 @@ const content: Record<Lang, Content> = {
     from: "de la",
     popular: "Cel mai solicitat",
     cta: "Cere informații",
-    waIntro: "Bună ziua, aș dori informații despre pachetul:",
     fixedPrice: "preț fix",
     base: {
       tag: "Pentru început",
@@ -481,7 +507,15 @@ const content: Record<Lang, Content> = {
       estimate: "Estimarea ta",
       care: "pentru asistență",
       disclaimer: "Estimare orientativă: prețul final se stabilește în ofertă. Domeniul și găzduirea web nu sunt incluse.",
-      send: "Trimite estimarea pe WhatsApp",
+      send: "Trimite cererea de ofertă",
+      sending: "Se trimite…",
+      sentTitle: "Cerere trimisă!",
+      sentText: "Mulțumim, îți trimitem oferta oficială în 24 de ore la emailul indicat.",
+      again: "Fă o nouă estimare",
+      error: "Trimiterea nu a reușit. Încearcă din nou în curând sau scrie-ne la",
+      subject: "Cerere de ofertă de pe site",
+      phone: "Telefon (opțional)",
+      waPhone: "Telefon",
       waIntro: "Bună ziua, am folosit calculatorul de pe site și aș dori o ofertă.",
       waPackage: "Pachet",
       delivery: "Livrare estimată",
@@ -490,10 +524,10 @@ const content: Record<Lang, Content> = {
       step4: "4. Datele tale",
       name: "Numele tău *",
       business: "Numele afacerii *",
-      email: "Email (opțional)",
+      email: "Emailul tău *",
       notes: "Note suplimentare (opțional)",
       notesPlaceholder: "Descrie pe scurt proiectul tău...",
-      dataNote: "Datele nu sunt salvate pe site: ajung doar în mesajul WhatsApp pe care îl trimiți.",
+      dataNote: "Datele sunt trimise prin email către Qui.SiteApp doar pentru a-ți răspunde, așa cum este descris în Politica de confidențialitate.",
       waName: "Nume",
       waBusiness: "Afacere",
       waEmail: "Email",
@@ -509,10 +543,6 @@ const content: Record<Lang, Content> = {
     ],
   },
 };
-
-function whatsappUrl(intro: string, packageName: string) {
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`${intro} ${packageName}`)}`;
-}
 
 function Fold({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -576,11 +606,14 @@ function eur(lang: Lang, value: number) {
   return `€${new Intl.NumberFormat(lang === "en" ? "en-US" : "de-DE").format(value)}`;
 }
 
-function PriceCalculator({ lang, c }: { lang: Lang; c: Content }) {
-  const [pkg, setPkg] = useState(2); // Most requested package
+type SendStatus = "idle" | "sending" | "sent" | "error";
+
+function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg: number; setPkg: (i: number) => void }) {
   const [quantities, setQuantities] = useState<number[]>(CALC.addons.map(() => 0));
   const [care, setCare] = useState<number | null>(null);
-  const [details, setDetails] = useState({ name: "", business: "", email: "", notes: "" });
+  const [details, setDetails] = useState({ name: "", business: "", email: "", phone: "", notes: "" });
+  const [status, setStatus] = useState<SendStatus>("idle");
+  const [botcheck, setBotcheck] = useState("");
   const setDetail = (key: keyof typeof details, value: string) =>
     setDetails((prev) => ({ ...prev, [key]: value }));
 
@@ -619,7 +652,8 @@ function PriceCalculator({ lang, c }: { lang: Lang; c: Content }) {
   const message = [
     `${c.calc.waName}: ${details.name.trim()}`,
     `${c.calc.waBusiness}: ${details.business.trim()}`,
-    ...(details.email.trim() ? [`${c.calc.waEmail}: ${details.email.trim()}`] : []),
+    `${c.calc.waEmail}: ${details.email.trim()}`,
+    ...(details.phone.trim() ? [`${c.calc.waPhone}: ${details.phone.trim()}`] : []),
     `${c.calc.waPackage}: ${packages[pkg].name}`,
     ...(chosen.length
       ? [`${c.addonsTitle}: ${chosen.map(addonLabel).join(", ")}`]
@@ -631,18 +665,27 @@ function PriceCalculator({ lang, c }: { lang: Lang; c: Content }) {
     ...(details.notes.trim() ? [`${c.calc.waNotes}: ${details.notes.trim()}`] : []),
   ].join("\n");
 
-  const send = (e: FormEvent<HTMLFormElement>) => {
+  const send = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const url = whatsappUrl(c.calc.waIntro, `\n${message}`);
-    const opened = window.open(url, "_blank");
-    if (opened) opened.opener = null;
-    else window.location.href = url; // In-app browsers often block new windows
+    setStatus("sending");
+    try {
+      await sendEmail({
+        subject: `${c.calc.subject} — ${details.business.trim()} (${packages[pkg].name})`,
+        name: details.name.trim(),
+        email: details.email.trim(),
+        message: `${c.calc.waIntro}\n\n${message}`,
+        botcheck,
+      });
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   };
 
   const fieldClass = "w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-400 bg-white";
 
   return (
-    <div className="max-w-4xl mx-auto bg-white border-2 border-blue-600 rounded-2xl p-6 md:p-8 mb-6">
+    <div id="preventivo" className="max-w-4xl mx-auto bg-white border-2 border-blue-600 rounded-2xl p-6 md:p-8 mb-6 scroll-mt-24">
       <h3 className="font-bold text-2xl text-gray-900">{c.calc.title}</h3>
       <p className="text-gray-500 mb-6">{c.calc.subtitle}</p>
 
@@ -760,7 +803,17 @@ function PriceCalculator({ lang, c }: { lang: Lang; c: Content }) {
         <p className="text-xs text-gray-500 mt-1">{c.calc.deliveryNote}</p>
       </div>
 
+      {status === "sent" ? (
+        <div className="mt-6 border border-green-200 bg-green-50 rounded-xl p-6 text-center" role="status">
+          <CheckCircle2 size={36} className="mx-auto text-green-600" />
+          <p className="mt-3 text-xl font-bold text-gray-900">{c.calc.sentTitle}</p>
+          <p className="mt-1 text-gray-600">{c.calc.sentText}</p>
+          <button type="button" onClick={() => setStatus("idle")} className="mt-4 text-sm font-semibold text-blue-600 hover:underline">{c.calc.again}</button>
+        </div>
+      ) : (
       <form onSubmit={send} className="mt-6">
+        {/* Honeypot: hidden from people, filled by bots */}
+        <input type="text" name="botcheck" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden value={botcheck} onChange={(e) => setBotcheck(e.target.value)} />
         <fieldset>
           <legend className="font-semibold text-gray-900 mb-3">{c.calc.step4}</legend>
           <div className="grid sm:grid-cols-2 gap-4">
@@ -772,9 +825,13 @@ function PriceCalculator({ lang, c }: { lang: Lang; c: Content }) {
               <label htmlFor="calc-business" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.business}</label>
               <input id="calc-business" type="text" required pattern=".*\S.*" autoComplete="organization" value={details.business} onChange={(e) => setDetail("business", e.target.value)} className={fieldClass} />
             </div>
-            <div className="sm:col-span-2">
+            <div>
               <label htmlFor="calc-email" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.email}</label>
-              <input id="calc-email" type="email" autoComplete="email" value={details.email} onChange={(e) => setDetail("email", e.target.value)} className={fieldClass} />
+              <input id="calc-email" type="email" required maxLength={200} autoComplete="email" value={details.email} onChange={(e) => setDetail("email", e.target.value)} className={fieldClass} />
+            </div>
+            <div>
+              <label htmlFor="calc-phone" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.phone}</label>
+              <input id="calc-phone" type="tel" maxLength={30} autoComplete="tel" value={details.phone} onChange={(e) => setDetail("phone", e.target.value)} className={fieldClass} />
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="calc-notes" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.notes}</label>
@@ -783,20 +840,33 @@ function PriceCalculator({ lang, c }: { lang: Lang; c: Content }) {
           </div>
         </fieldset>
         <p className="text-xs text-gray-500 mt-3 mb-4">{c.calc.dataNote}</p>
+        {status === "error" && (
+          <p className="text-sm text-red-600 mb-4" role="alert">
+            {c.calc.error} <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold underline">{CONTACT_EMAIL}</a>.
+          </p>
+        )}
         <button
           type="submit"
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
+          disabled={status === "sending"}
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white font-semibold px-6 py-3 rounded-xl transition-colors"
         >
-          <MessageCircle size={18} />
-          {c.calc.send}
+          {status === "sending" ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
+          {status === "sending" ? c.calc.sending : c.calc.send}
         </button>
       </form>
+      )}
     </div>
   );
 }
 
 export default function Pricing({ lang }: { lang: Lang }) {
   const c = content[lang];
+  const [pkg, setPkg] = useState(2); // Most requested package
+  // "Ask for details" picks the package in the calculator and scrolls there, where the request is sent by email.
+  const choose = (i: number) => {
+    setPkg(i);
+    document.getElementById("preventivo")?.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <section id="pricing" className="py-24 px-6 bg-gray-50 border-b border-gray-200">
@@ -830,15 +900,14 @@ export default function Pricing({ lang }: { lang: Lang }) {
             <FeatureList items={c.base.features} />
             <p className="text-xs text-gray-400 mt-3">{c.base.excluded}</p>
           </div>
-          <a
-            href={whatsappUrl(c.waIntro, c.base.name)}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            type="button"
+            onClick={() => choose(BASE_PACKAGE)}
             className="inline-flex items-center justify-center gap-2 border-2 border-blue-600 text-blue-700 hover:bg-blue-50 font-semibold px-5 py-3 rounded-xl transition-colors"
           >
-            <MessageCircle size={18} />
+            <ArrowDown size={18} />
             {c.cta}
-          </a>
+          </button>
         </motion.div>
 
         {/* Packages */}
@@ -863,17 +932,16 @@ export default function Pricing({ lang }: { lang: Lang }) {
                 <div className="flex-1 mb-6">
                   <FeatureList items={pkg.features} />
                 </div>
-                <a
-                  href={whatsappUrl(c.waIntro, pkg.name)}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={() => choose(i + 1)}
                   className={`inline-flex items-center justify-center gap-2 font-semibold px-4 py-3 rounded-xl transition-colors ${
                     popular ? "bg-blue-600 hover:bg-blue-700 text-white" : "border-2 border-blue-600 text-blue-700 hover:bg-blue-50"
                   }`}
                 >
-                  <MessageCircle size={18} />
+                  <ArrowDown size={18} />
                   {c.cta}
-                </a>
+                </button>
               </motion.div>
             );
           })}
@@ -882,7 +950,7 @@ export default function Pricing({ lang }: { lang: Lang }) {
         <p className="text-sm text-gray-500 text-center max-w-3xl mx-auto mb-2">{c.note}</p>
         <p className="text-sm text-gray-500 text-center mb-10">{c.custom}</p>
 
-        <PriceCalculator lang={lang} c={c} />
+        <PriceCalculator lang={lang} c={c} pkg={pkg} setPkg={setPkg} />
 
         {/* Details */}
         <div className="space-y-4 max-w-4xl mx-auto">

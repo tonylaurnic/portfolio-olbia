@@ -9,7 +9,7 @@ const steps = {
       icon: Phone,
       number: "01",
       title: "Chiamata gratuita",
-      desc: "Presentaci il tuo progetto con una chiamata o su WhatsApp. Senza impegno e senza costi.",
+      desc: "Presentaci il tuo progetto con una chiamata o via email. Senza impegno e senza costi.",
       color: "bg-blue-100 text-blue-600",
     },
     {
@@ -32,7 +32,7 @@ const steps = {
       icon: Phone,
       number: "01",
       title: "Free call",
-      desc: "Tell us about your project in a call or on WhatsApp. No commitment, no cost.",
+      desc: "Tell us about your project in a call or by email. No commitment, no cost.",
       color: "bg-blue-100 text-blue-600",
     },
     {
@@ -53,13 +53,13 @@ const steps = {
 };
 
 const steps_de = [
-  { icon: Phone, number: "01", title: "Kostenloses Gespräch", desc: "Stellen Sie uns Ihr Projekt per Anruf oder WhatsApp vor. Unverbindlich und kostenlos.", color: "bg-blue-100 text-blue-600" },
+  { icon: Phone, number: "01", title: "Kostenloses Gespräch", desc: "Stellen Sie uns Ihr Projekt per Anruf oder E-Mail vor. Unverbindlich und kostenlos.", color: "bg-blue-100 text-blue-600" },
   { icon: FileText, number: "02", title: "Angebot in 24h", desc: "Sie erhalten innerhalb von 24 Stunden ein klares Angebot. Festpreise, keine Überraschungen.", color: "bg-purple-100 text-purple-600" },
   { icon: Rocket, number: "03", title: "Entwicklung & Lieferung", desc: "Wir starten das Projekt, informieren Sie in jeder Phase und liefern termingerecht.", color: "bg-green-100 text-green-600" },
 ];
 
 const steps_ro = [
-  { icon: Phone, number: "01", title: "Apel gratuit", desc: "Ne prezinți proiectul printr-un apel sau pe WhatsApp. Fără angajament, fără costuri.", color: "bg-blue-100 text-blue-600" },
+  { icon: Phone, number: "01", title: "Apel gratuit", desc: "Ne prezinți proiectul printr-un apel sau prin email. Fără angajament, fără costuri.", color: "bg-blue-100 text-blue-600" },
   { icon: FileText, number: "02", title: "Ofertă în 24h", desc: "Primești o ofertă clară și detaliată în 24 de ore. Prețuri fixe, fără surprize.", color: "bg-purple-100 text-purple-600" },
   { icon: Rocket, number: "03", title: "Dezvoltare și livrare", desc: "Demarăm proiectul, te ținem la curent la fiecare etapă și livrăm la termen.", color: "bg-green-100 text-green-600" },
 ];

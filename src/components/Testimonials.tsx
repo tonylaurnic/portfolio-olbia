@@ -31,10 +31,10 @@ const perks: Record<Lang, { icon: typeof Rocket; title: string; desc: string }[]
 };
 
 const cta = {
-  it: { sub: "Hai un progetto in mente?", title: "Realizziamolo insieme.", desc: "Preventivo gratuito entro 24 ore, senza impegno.", btn: "Richiedi un preventivo", wa: "Buongiorno, vorrei richiedere un preventivo." },
-  en: { sub: "Have a project in mind?", title: "Let's build it together.", desc: "Free quote within 24 hours, with no obligation.", btn: "Request a quote", wa: "Hello, I would like to request a quote." },
-  de: { sub: "Haben Sie ein Projekt im Sinn?", title: "Setzen wir es gemeinsam um.", desc: "Kostenloses Angebot innerhalb von 24 Stunden, unverbindlich.", btn: "Angebot anfordern", wa: "Guten Tag, ich möchte ein Angebot anfordern." },
-  ro: { sub: "Ai un proiect în minte?", title: "Să-l realizăm împreună.", desc: "Ofertă gratuită în 24 de ore, fără obligații.", btn: "Solicită o ofertă", wa: "Bună ziua, aș dori să solicit o ofertă." },
+  it: { sub: "Hai un progetto in mente?", title: "Realizziamolo insieme.", desc: "Preventivo gratuito entro 24 ore, senza impegno.", btn: "Richiedi un preventivo" },
+  en: { sub: "Have a project in mind?", title: "Let's build it together.", desc: "Free quote within 24 hours, with no obligation.", btn: "Request a quote" },
+  de: { sub: "Haben Sie ein Projekt im Sinn?", title: "Setzen wir es gemeinsam um.", desc: "Kostenloses Angebot innerhalb von 24 Stunden, unverbindlich.", btn: "Angebot anfordern" },
+  ro: { sub: "Ai un proiect în minte?", title: "Să-l realizăm împreună.", desc: "Ofertă gratuită în 24 de ore, fără obligații.", btn: "Solicită o ofertă" },
 };
 
 export default function Testimonials({ lang }: { lang: Lang }) {
@@ -90,15 +90,6 @@ export default function Testimonials({ lang }: { lang: Lang }) {
               >
                 {c.btn}
                 <ArrowRight size={20} />
-              </a>
-              <a
-                href={`https://wa.me/393883879487?text=${encodeURIComponent(c.wa)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-4 rounded-xl transition-colors text-lg"
-              >
-                <MessageCircle size={20} />
-                WhatsApp
               </a>
             </div>
           </div>

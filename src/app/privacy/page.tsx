@@ -16,14 +16,19 @@ export default function Privacy() {
 
         <div>
           <h2 className="font-bold text-gray-900 text-lg mb-2">Dati raccolti</h2>
-          <p>Il sito non salva i dati inseriti nel preventivo: finiscono solo nel messaggio WhatsApp che decidi di inviarci. Se ci scrivi su WhatsApp o via email trattiamo i dati che ci invii, ad esempio:</p>
+          <p>Quando compili il modulo di contatto o il modulo di preventivo, oppure ci scrivi via email, trattiamo i dati che ci invii, ad esempio:</p>
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li>Nome e cognome</li>
-            <li>Numero di telefono o indirizzo email</li>
+            <li>Indirizzo email e, se lo indichi, numero di telefono</li>
             <li>Nome dell'attività</li>
-            <li>Contenuto del messaggio</li>
+            <li>Contenuto del messaggio e scelte fatte nel calcolatore del preventivo</li>
           </ul>
-          <p className="mt-3">I dati vengono raccolti esclusivamente per rispondere alle richieste di preventivo e non vengono ceduti a terzi.</p>
+          <p className="mt-3">Il sito non salva questi dati in un proprio database: il messaggio viene inoltrato alla nostra casella email. I dati vengono usati esclusivamente per rispondere alle richieste e non vengono venduti né ceduti a terzi per altri scopi.</p>
+        </div>
+
+        <div>
+          <h2 className="font-bold text-gray-900 text-lg mb-2">Fornitori che trattano i dati</h2>
+          <p>Per recapitare i messaggi dei moduli usiamo Web3Forms, un servizio esterno che riceve il modulo e lo inoltra via email a <a href="mailto:info@quisiteapp.it" className="text-blue-600 hover:underline">info@quisiteapp.it</a>. Web3Forms tratta i dati solo per questo invio, secondo la propria <a href="https://web3forms.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">informativa privacy</a>.</p>
         </div>
 
         <div>

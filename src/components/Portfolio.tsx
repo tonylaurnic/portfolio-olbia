@@ -1,16 +1,18 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { Lang, t } from "@/lib/i18n";
+import { SERVICE_KEYS, type ServiceKey } from "@/lib/services";
 import ProjectModal, { ProjectData, StoreLinks } from "@/components/ProjectModal";
 
-type Project = ProjectData;
+type Project = ProjectData & { services: ServiceKey[] };
 
 const projects: Project[] = [
   {
     title: "Terrazza Maestrale",
+    services: ["web"],
     category: { it: "Demo — Sito per ristoranti", en: "Demo — Restaurant website", de: "Demo — Website für Restaurants", ro: "Demo — Site pentru restaurante" },
     desc: {
       it: "Simulazione di un sito per un ristorante di fantasia a Olbia: menu sfogliabile, galleria di foto, prenotazione del tavolo e versione in inglese per i turisti. Provalo come farebbero i tuoi clienti.",
@@ -27,6 +29,7 @@ const projects: Project[] = [
   },
   {
     title: "DentalCare Plus",
+    services: ["web"],
     category: { it: "Sito Web — Germania", en: "Website — Germany", de: "Website — Deutschland", ro: "Site Web — Germania" },
     desc: {
       it: "Sito professionale per studio dentistico in Germania. Design moderno, in tedesco e inglese, con prenotazione degli appuntamenti online e ottimizzazione per farsi trovare su Google in zona.",
@@ -44,6 +47,7 @@ const projects: Project[] = [
   },
   {
     title: "TrackMyTruck",
+    services: ["app", "custom"],
     category: { it: "App iPhone — Food truck e mercati", en: "iPhone App — Food trucks & markets", de: "iPhone-App — Foodtrucks & Märkte", ro: "Aplicație iPhone — Food truck-uri și piețe" },
     desc: {
       it: "Mappa in tempo reale di food truck, ambulanti e bancarelle: i clienti vedono chi è aperto vicino a loro, con menu e offerte. I titolari gestiscono tutto da una piattaforma web collegata.",
@@ -61,6 +65,7 @@ const projects: Project[] = [
   },
   {
     title: "vitaFit",
+    services: ["app"],
     category: { it: "App iPhone e Android — Salute", en: "iPhone & Android App — Health", de: "iPhone- & Android-App — Gesundheit", ro: "Aplicație iPhone și Android — Sănătate" },
     desc: {
       it: "Digiuno intermittente e controllo del peso in un'unica app: timer, storico dei progressi e menu personalizzati creati con l'intelligenza artificiale.",
@@ -81,6 +86,7 @@ const projects: Project[] = [
   },
   {
     title: "Chef Planner",
+    services: ["app"],
     category: { it: "App iPhone e Android — Cucina", en: "iPhone & Android App — Cooking", de: "iPhone- & Android-App — Kochen", ro: "Aplicație iPhone și Android — Gătit" },
     desc: {
       it: "Trasforma qualsiasi ricetta in una scheda ordinata e pronta da cucinare: da una foto, da un sito, da YouTube o dai social, con ingredienti e passaggi estratti dall'intelligenza artificiale.",
@@ -101,6 +107,7 @@ const projects: Project[] = [
   },
   {
     title: "AndroDash",
+    services: ["app"],
     category: { it: "App Android — Play Store", en: "Android App — Play Store", de: "Android-App — Play Store", ro: "App Android — Play Store" },
     desc: {
       it: "App dashcam per Android pubblicata sul Google Play Store. Registrazione automatica continua, rilevamento urti e salvataggio dei video mentre usi altre app.",
@@ -118,6 +125,7 @@ const projects: Project[] = [
   },
   {
     title: "DySign",
+    services: ["screen"],
     category: { it: "App TV — Lavagna Elettronica per Locali", en: "TV App — Digital Screen for Venues", de: "TV-App — Digitaler Bildschirm für Lokale", ro: "App TV — Ecran Digital pentru Localuri" },
     desc: {
       it: "Il tuo schermo TV diventa uno strumento per farti pubblicità. Mostra menu, offerte, foto e promozioni — aggiorni tutto dal telefono in pochi secondi, anche mentre sei a casa.",
@@ -134,27 +142,73 @@ const projects: Project[] = [
   },
 ];
 
-export default function Portfolio({ lang }: { lang: Lang }) {
+const filterCopy: Record<Lang, { all: string; empty: string; emptyCta: string }> = {
+  it: { all: "Tutti", empty: "Ogni soluzione su misura nasce dalle esigenze del cliente: raccontaci la tua idea.", emptyCta: "Richiedi un preventivo" },
+  en: { all: "All", empty: "Every custom solution starts from the client's needs: tell us your idea.", emptyCta: "Request a quote" },
+  de: { all: "Alle", empty: "Jede maßgeschneiderte Lösung entsteht aus den Bedürfnissen des Kunden: Erzählen Sie uns Ihre Idee.", emptyCta: "Angebot anfordern" },
+  ro: { all: "Toate", empty: "Fiecare soluție personalizată pornește de la nevoile clientului: povestește-ne ideea ta.", emptyCta: "Solicită o ofertă" },
+};
+
+export default function Portfolio({ lang, category, setCategory }: {
+  lang: Lang;
+  category: ServiceKey | null;
+  setCategory: (key: ServiceKey | null) => void;
+}) {
   const tr = t[lang].portfolio;
+  const fc = filterCopy[lang];
   const [selected, setSelected] = useState<Project | null>(null);
+  const shown = category ? projects.filter((p) => p.services.includes(category)) : projects;
+  const chips: { key: ServiceKey | null; label: string }[] = [
+    { key: null, label: fc.all },
+    ...SERVICE_KEYS.map((key, i) => ({ key, label: t[lang].services.items[i].title })),
+  ];
 
   return (
-    <section id="portfolio" className="py-24 px-6 bg-gray-50 border-t border-gray-200">
+    <section id="portfolio" className="py-24 px-6 bg-gray-50 border-t border-gray-200 scroll-mt-16">
       <ProjectModal project={selected} onClose={() => setSelected(null)} lang={lang} />
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4">{tr.title}</h2>
           <p className="text-lg text-gray-500">{tr.subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((p, i) => (
+        {/* Category filter (also set by the service cards) */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10" role="group" aria-label={tr.title}>
+          {chips.map((c) => {
+            const active = category === c.key;
+            return (
+              <button
+                key={c.key ?? "all"}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setCategory(c.key)}
+                className={`px-4 py-2 rounded-full text-sm font-semibold border transition-colors ${
+                  active ? "bg-blue-600 border-blue-600 text-white shadow-sm" : "bg-white border-gray-200 text-gray-600 hover:border-blue-300 hover:text-blue-700"
+                }`}
+              >
+                {c.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {shown.length === 0 && (
+          <div className="max-w-xl mx-auto text-center bg-white border border-gray-200 rounded-2xl p-8">
+            <p className="text-gray-600">{fc.empty}</p>
+            <a href="#contact" className="mt-4 inline-block font-semibold text-blue-600 hover:underline">{fc.emptyCta} →</a>
+          </div>
+        )}
+
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <AnimatePresence mode="popLayout">
+          {shown.map((p, i) => (
             <motion.div
-              key={i}
+              key={p.title}
+              layout
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.08 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.35, delay: i * 0.05 }}
               onClick={() => setSelected(p)}
               className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all cursor-pointer group flex flex-col"
             >
@@ -214,7 +268,8 @@ export default function Portfolio({ lang }: { lang: Lang }) {
               </div>
             </motion.div>
           ))}
-        </div>
+          </AnimatePresence>
+        </motion.div>
       </div>
     </section>
   );

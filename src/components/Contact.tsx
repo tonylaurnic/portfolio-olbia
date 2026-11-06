@@ -7,61 +7,61 @@ import { sendEmail, CONTACT_EMAIL } from "@/lib/sendEmail";
 
 type Copy = {
   title: string; subtitle: string;
-  name: string; email: string; message: string; messagePlaceholder: string;
+  name: string; email: string; phone: string; message: string; messagePlaceholder: string;
   send: string; sending: string;
   sentTitle: string; sentText: string; again: string;
   error: string; privacy: string; privacyLink: string; orEmail: string;
-  subject: string;
+  subject: string; phoneLabel: string;
 };
 
 const content: Record<Lang, Copy> = {
   it: {
     title: "Richiedi un preventivo",
     subtitle: "Raccontaci il tuo progetto: riceverai entro 24 ore un preventivo gratuito.",
-    name: "Nome *", email: "Email *", message: "Messaggio *",
+    name: "Nome *", email: "Email *", phone: "Telefono *", message: "Messaggio *",
     messagePlaceholder: "Che tipo di attività hai e cosa ti serve?",
     send: "Invia la richiesta", sending: "Invio in corso…",
-    sentTitle: "Messaggio inviato!", sentText: "Grazie, ti rispondiamo entro 24 ore all'indirizzo email che hai indicato.", again: "Invia un altro messaggio",
+    sentTitle: "Messaggio inviato!", sentText: "Grazie, ti ricontattiamo entro 24 ore al telefono o all'email che hai indicato.", again: "Invia un altro messaggio",
     error: "Invio non riuscito. Riprova tra poco oppure scrivici direttamente a",
     privacy: "Inviando il modulo accetti il trattamento dei dati per rispondere alla richiesta, come descritto nella", privacyLink: "Privacy",
     orEmail: "oppure scrivici a",
-    subject: "Nuova richiesta dal sito",
+    subject: "Nuova richiesta dal sito", phoneLabel: "Telefono",
   },
   en: {
     title: "Request a quote",
     subtitle: "Tell us about your project: you will receive a free quote within 24 hours.",
-    name: "Name *", email: "Email *", message: "Message *",
+    name: "Name *", email: "Email *", phone: "Phone *", message: "Message *",
     messagePlaceholder: "What kind of business do you have and what do you need?",
     send: "Send request", sending: "Sending…",
-    sentTitle: "Message sent!", sentText: "Thank you, we'll reply within 24 hours to the email address you provided.", again: "Send another message",
+    sentTitle: "Message sent!", sentText: "Thank you, we'll get back to you within 24 hours by phone or email.", again: "Send another message",
     error: "Sending failed. Please try again shortly or write to us directly at",
     privacy: "By sending this form you agree to the processing of your data to answer your request, as described in the", privacyLink: "Privacy Policy",
     orEmail: "or write to",
-    subject: "New request from the website",
+    subject: "New request from the website", phoneLabel: "Phone",
   },
   de: {
     title: "Angebot anfordern",
     subtitle: "Erzählen Sie uns von Ihrem Projekt: Sie erhalten innerhalb von 24 Stunden ein kostenloses Angebot.",
-    name: "Name *", email: "E-Mail *", message: "Nachricht *",
+    name: "Name *", email: "E-Mail *", phone: "Telefon *", message: "Nachricht *",
     messagePlaceholder: "Was für ein Unternehmen haben Sie und was brauchen Sie?",
     send: "Anfrage senden", sending: "Wird gesendet…",
-    sentTitle: "Nachricht gesendet!", sentText: "Vielen Dank, wir antworten innerhalb von 24 Stunden an die angegebene E-Mail-Adresse.", again: "Weitere Nachricht senden",
+    sentTitle: "Nachricht gesendet!", sentText: "Vielen Dank, wir melden uns innerhalb von 24 Stunden telefonisch oder per E-Mail.", again: "Weitere Nachricht senden",
     error: "Senden fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal oder schreiben Sie uns direkt an",
     privacy: "Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten zur Beantwortung Ihrer Anfrage zu, wie in der", privacyLink: "Datenschutzerklärung beschrieben",
     orEmail: "oder schreiben Sie an",
-    subject: "Neue Anfrage über die Website",
+    subject: "Neue Anfrage über die Website", phoneLabel: "Telefon",
   },
   ro: {
     title: "Solicită o ofertă",
     subtitle: "Povestește-ne despre proiectul tău: vei primi o ofertă gratuită în 24 de ore.",
-    name: "Nume *", email: "Email *", message: "Mesaj *",
+    name: "Nume *", email: "Email *", phone: "Telefon *", message: "Mesaj *",
     messagePlaceholder: "Ce fel de afacere ai și de ce ai nevoie?",
     send: "Trimite cererea", sending: "Se trimite…",
-    sentTitle: "Mesaj trimis!", sentText: "Mulțumim, îți răspundem în 24 de ore la adresa de email indicată.", again: "Trimite alt mesaj",
+    sentTitle: "Mesaj trimis!", sentText: "Mulțumim, te contactăm în 24 de ore la telefon sau pe email.", again: "Trimite alt mesaj",
     error: "Trimiterea nu a reușit. Încearcă din nou în curând sau scrie-ne direct la",
     privacy: "Trimițând formularul accepți prelucrarea datelor pentru a răspunde cererii, așa cum este descris în", privacyLink: "Politica de confidențialitate",
     orEmail: "sau scrie-ne la",
-    subject: "Cerere nouă de pe site",
+    subject: "Cerere nouă de pe site", phoneLabel: "Telefon",
   },
 };
 
@@ -79,10 +79,11 @@ export default function Contact({ lang }: { lang: Lang }) {
     setStatus("sending");
     try {
       await sendEmail({
-        subject: `${tr.subject} — ${get("name")}`,
+        subject: `${tr.subject} — ${get("name")} (${get("phone")})`,
         name: get("name"),
         email: get("email"),
         message: get("message"),
+        fields: { [tr.phoneLabel]: get("phone") },
         botcheck: get("botcheck"),
       });
       form.reset();
@@ -125,6 +126,10 @@ export default function Contact({ lang }: { lang: Lang }) {
             <div>
               <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-1">{tr.email}</label>
               <input id="contact-email" name="email" type="email" required maxLength={200} autoComplete="email" className={field} />
+            </div>
+            <div className="sm:col-span-2">
+              <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-1">{tr.phone}</label>
+              <input id="contact-phone" name="phone" type="tel" required pattern="[0-9+ ]{6,20}" maxLength={20} autoComplete="tel" inputMode="tel" placeholder="+39 333 123 4567" className={field} />
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-1">{tr.message}</label>

@@ -19,7 +19,7 @@ export default function Privacy() {
           <p>Quando compili il modulo di contatto o il modulo di preventivo, oppure ci scrivi via email, trattiamo i dati che ci invii, ad esempio:</p>
           <ul className="list-disc list-inside mt-2 space-y-1">
             <li>Nome e cognome</li>
-            <li>Indirizzo email</li>
+            <li>Indirizzo email e numero di telefono</li>
             <li>Nome dell'attività</li>
             <li>Contenuto del messaggio e scelte fatte nel calcolatore del preventivo</li>
           </ul>

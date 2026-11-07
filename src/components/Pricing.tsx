@@ -57,12 +57,14 @@ type Content = {
     name: string;
     business: string;
     email: string;
+    phone: string;
     notes: string;
     notesPlaceholder: string;
     dataNote: string;
     waName: string;
     waBusiness: string;
     waEmail: string;
+    waPhone: string;
     waNotes: string;
   };
 };
@@ -154,7 +156,7 @@ const content: Record<Lang, Content> = {
       send: "Invia la richiesta di preventivo",
       sending: "Invio in corso…",
       sentTitle: "Richiesta inviata!",
-      sentText: "Grazie, ti mandiamo il preventivo ufficiale entro 24 ore all'email che hai indicato.",
+      sentText: "Grazie, ti ricontattiamo entro 24 ore al telefono o all'email che hai indicato con il preventivo ufficiale.",
       again: "Fai un altro preventivo",
       error: "Invio non riuscito. Riprova tra poco oppure scrivici a",
       subject: "Richiesta di preventivo dal sito",
@@ -167,12 +169,14 @@ const content: Record<Lang, Content> = {
       name: "Il tuo nome *",
       business: "Nome dell'attività *",
       email: "La tua email *",
+      phone: "Telefono *",
       notes: "Note aggiuntive (opzionale)",
       notesPlaceholder: "Descrivi brevemente il tuo progetto...",
       dataNote: "I dati vengono inviati via email a Qui.SiteApp solo per risponderti, come descritto nella Privacy.",
       waName: "Nome",
       waBusiness: "Attività",
       waEmail: "Email",
+      waPhone: "Telefono",
       waNotes: "Note",
       deliveryNote: "Tempi indicativi: la data di consegna viene confermata nel preventivo ufficiale. I giorni si contano dal primo pagamento e dalla ricezione di tutti i materiali.",
     },
@@ -270,7 +274,7 @@ const content: Record<Lang, Content> = {
       send: "Send quote request",
       sending: "Sending…",
       sentTitle: "Request sent!",
-      sentText: "Thank you, we'll send you the official quote within 24 hours to the email you provided.",
+      sentText: "Thank you, we'll get back to you within 24 hours by phone or email with the official quote.",
       again: "Make another estimate",
       error: "Sending failed. Please try again shortly or write to",
       subject: "Quote request from the website",
@@ -283,12 +287,14 @@ const content: Record<Lang, Content> = {
       name: "Your name *",
       business: "Business name *",
       email: "Your email *",
+      phone: "Phone *",
       notes: "Additional notes (optional)",
       notesPlaceholder: "Briefly describe your project...",
       dataNote: "Your details are emailed to Qui.SiteApp only to reply to you, as described in the Privacy Policy.",
       waName: "Name",
       waBusiness: "Business",
       waEmail: "Email",
+      waPhone: "Phone",
       waNotes: "Notes",
       deliveryNote: "Indicative times: the delivery date is confirmed in the quote. Days are counted from receipt of the first payment and all materials.",
     },
@@ -386,7 +392,7 @@ const content: Record<Lang, Content> = {
       send: "Angebotsanfrage senden",
       sending: "Wird gesendet…",
       sentTitle: "Anfrage gesendet!",
-      sentText: "Vielen Dank, wir senden Ihnen das offizielle Angebot innerhalb von 24 Stunden an die angegebene E-Mail.",
+      sentText: "Vielen Dank, wir melden uns innerhalb von 24 Stunden telefonisch oder per E-Mail mit dem offiziellen Angebot.",
       again: "Neue Schätzung erstellen",
       error: "Senden fehlgeschlagen. Bitte versuchen Sie es gleich noch einmal oder schreiben Sie an",
       subject: "Angebotsanfrage über die Website",
@@ -399,12 +405,14 @@ const content: Record<Lang, Content> = {
       name: "Ihr Name *",
       business: "Unternehmensname *",
       email: "Ihre E-Mail *",
+      phone: "Telefon *",
       notes: "Zusätzliche Notizen (optional)",
       notesPlaceholder: "Beschreiben Sie Ihr Projekt kurz...",
       dataNote: "Ihre Daten werden nur zur Beantwortung per E-Mail an Qui.SiteApp gesendet, wie in der Datenschutzerklärung beschrieben.",
       waName: "Name",
       waBusiness: "Unternehmen",
       waEmail: "E-Mail",
+      waPhone: "Telefon",
       waNotes: "Notizen",
       deliveryNote: "Unverbindliche Zeitangabe: Der Liefertermin wird im Angebot bestätigt. Die Tage zählen ab Eingang der ersten Zahlung und aller Materialien.",
     },
@@ -502,7 +510,7 @@ const content: Record<Lang, Content> = {
       send: "Trimite cererea de ofertă",
       sending: "Se trimite…",
       sentTitle: "Cerere trimisă!",
-      sentText: "Mulțumim, îți trimitem oferta oficială în 24 de ore la emailul indicat.",
+      sentText: "Mulțumim, te contactăm în 24 de ore la telefon sau pe email cu oferta oficială.",
       again: "Fă o nouă estimare",
       error: "Trimiterea nu a reușit. Încearcă din nou în curând sau scrie-ne la",
       subject: "Cerere de ofertă de pe site",
@@ -515,12 +523,14 @@ const content: Record<Lang, Content> = {
       name: "Numele tău *",
       business: "Numele afacerii *",
       email: "Emailul tău *",
+      phone: "Telefon *",
       notes: "Note suplimentare (opțional)",
       notesPlaceholder: "Descrie pe scurt proiectul tău...",
       dataNote: "Datele sunt trimise prin email către Qui.SiteApp doar pentru a-ți răspunde, așa cum este descris în Politica de confidențialitate.",
       waName: "Nume",
       waBusiness: "Afacere",
       waEmail: "Email",
+      waPhone: "Telefon",
       waNotes: "Note",
       deliveryNote: "Termene orientative: data livrării se confirmă în ofertă. Zilele se numără de la primirea primei plăți și a tuturor materialelor.",
     },
@@ -601,7 +611,7 @@ type SendStatus = "idle" | "sending" | "sent" | "error";
 function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg: number; setPkg: (i: number) => void }) {
   const [quantities, setQuantities] = useState<number[]>(CALC.addons.map(() => 0));
   const [care, setCare] = useState<number | null>(null);
-  const [details, setDetails] = useState({ name: "", business: "", email: "", notes: "" });
+  const [details, setDetails] = useState({ name: "", business: "", email: "", phone: "", notes: "" });
   const [status, setStatus] = useState<SendStatus>("idle");
   const [botcheck, setBotcheck] = useState("");
   const setDetail = (key: keyof typeof details, value: string) =>
@@ -643,6 +653,7 @@ function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg
     `${c.calc.waName}: ${details.name.trim()}`,
     `${c.calc.waBusiness}: ${details.business.trim()}`,
     `${c.calc.waEmail}: ${details.email.trim()}`,
+    `${c.calc.waPhone}: ${details.phone.trim()}`,
     `${c.calc.waPackage}: ${packages[pkg].name}`,
     ...(chosen.length
       ? [`${c.addonsTitle}: ${chosen.map(addonLabel).join(", ")}`]
@@ -659,7 +670,7 @@ function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg
     setStatus("sending");
     try {
       await sendEmail({
-        subject: `${c.calc.subject} — ${details.business.trim()} (${packages[pkg].name})`,
+        subject: `${c.calc.subject} — ${details.business.trim()} (${packages[pkg].name}) · ${details.phone.trim()}`,
         name: details.name.trim(),
         email: details.email.trim(),
         message: `${c.calc.waIntro}\n\n${message}`,
@@ -814,9 +825,13 @@ function PriceCalculator({ lang, c, pkg, setPkg }: { lang: Lang; c: Content; pkg
               <label htmlFor="calc-business" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.business}</label>
               <input id="calc-business" type="text" required pattern=".*\S.*" autoComplete="organization" value={details.business} onChange={(e) => setDetail("business", e.target.value)} className={fieldClass} />
             </div>
-            <div className="sm:col-span-2">
+            <div>
               <label htmlFor="calc-email" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.email}</label>
               <input id="calc-email" type="email" required maxLength={200} autoComplete="email" value={details.email} onChange={(e) => setDetail("email", e.target.value)} className={fieldClass} />
+            </div>
+            <div>
+              <label htmlFor="calc-phone" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.phone}</label>
+              <input id="calc-phone" type="tel" required pattern="[0-9+ ]{6,20}" maxLength={20} autoComplete="tel" inputMode="tel" placeholder="+39 333 123 4567" value={details.phone} onChange={(e) => setDetail("phone", e.target.value)} className={fieldClass} />
             </div>
             <div className="sm:col-span-2">
               <label htmlFor="calc-notes" className="block text-sm font-medium text-gray-700 mb-1">{c.calc.notes}</label>
